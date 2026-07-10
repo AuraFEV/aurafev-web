@@ -1,0 +1,16 @@
+/**
+ * texture.css
+ * The "topographic ripple" texture, taken from the Aura Fev packaging
+ * artwork, reused as a subtle background layer across cards and dark
+ * sections. Defined once as an SVG pattern in index.html (#topo-lines)
+ * and consumed here as a plain CSS utility class.
+ */
+.card-texture,
+.bg-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bg-texture--faint { opacity: 0.14; }
+.bg-texture--soft { opacity: 0.5; }

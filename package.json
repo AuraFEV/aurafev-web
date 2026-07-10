@@ -1,0 +1,16 @@
+{
+  "name": "aura-fev-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Aura Fev — digital flagship store. Static HTML/CSS/JS site, zero runtime dependencies.",
+  "scripts": {
+    "build": "node scripts/generate-config.js",
+    "start": "node scripts/generate-config.js && npx --yes serve . -l 3000"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

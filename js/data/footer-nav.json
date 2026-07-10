@@ -1,0 +1,19 @@
+{
+  "tienda": [
+    { "label": "Colecciones", "href": "#colecciones" },
+    { "label": "Por Ocasión", "href": "#ocasiones" },
+    { "label": "Regalos Corporativos", "href": "/collections/corporativo.html" },
+    { "label": "Tarjetas de Regalo", "href": "/gift-cards.html" }
+  ],
+  "ayuda": [
+    { "label": "Preguntas Frecuentes", "href": "#faq" },
+    { "label": "Envíos", "href": "/envios.html" },
+    { "label": "Cambios y Devoluciones", "href": "/cambios.html" },
+    { "label": "Contacto", "href": "/contacto.html" }
+  ],
+  "empresa": [
+    { "label": "Nuestra Historia", "href": "#experiencia" },
+    { "label": "Sostenibilidad", "href": "/sostenibilidad.html" },
+    { "label": "Trabaja con Nosotros", "href": "/carreras.html" }
+  ]
+}

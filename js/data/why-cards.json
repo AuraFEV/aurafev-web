@@ -1,0 +1,8 @@
+[
+  { "icon": "package", "title": "Empaque Premium", "text": "Cada pieza llega envuelta como el momento que celebra." },
+  { "icon": "message", "title": "Mensaje Personalizado", "text": "Tus palabras, escritas a mano, dentro de cada caja." },
+  { "icon": "truck", "title": "Entrega Elegante", "text": "Puntual, cuidada y lista para emocionar desde el primer segundo." },
+  { "icon": "shield", "title": "Garantía", "text": "Respaldamos cada joya que sale de nuestras manos." },
+  { "icon": "gem", "title": "Calidad", "text": "Materiales nobles, hechos para durar toda una vida." },
+  { "icon": "support", "title": "Atención Personalizada", "text": "Un equipo real, listo para ayudarte a elegir bien." }
+]

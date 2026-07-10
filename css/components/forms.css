@@ -1,0 +1,54 @@
+/**
+ * forms.css
+ * Shared form primitives — newsletter today, cart/checkout/account forms
+ * later reuse the same classes so the visual language never forks.
+ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+}
+
+.input,
+.newsletter-form input {
+  padding: 15px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  font-size: 0.85rem;
+  color: var(--text);
+  transition: border-color var(--duration-fast);
+}
+
+.input:focus,
+.newsletter-form input:focus {
+  border-color: var(--gold);
+}
+
+.input::placeholder,
+.newsletter-form input::placeholder {
+  color: var(--text-faint);
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: 400px;
+}
+
+.newsletter-form input { flex: 1; min-width: 200px; }
+
+.form-message {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.form-message[data-state="success"] { color: var(--bronze); }
+.form-message[data-state="error"] { color: #a4453a; }

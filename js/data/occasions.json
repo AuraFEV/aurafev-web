@@ -1,0 +1,11 @@
+[
+  { "id": "pareja", "label": "Para mi pareja", "icon": "heart", "href": "/collections/pareja.html" },
+  { "id": "cumpleanos", "label": "Cumpleaños", "icon": "cake", "href": "/collections/cumpleanos.html" },
+  { "id": "graduacion", "label": "Graduación", "icon": "graduation", "href": "/collections/graduacion.html" },
+  { "id": "mama", "label": "Para mamá", "icon": "mother", "href": "/collections/mama.html" },
+  { "id": "papa", "label": "Para papá", "icon": "father", "href": "/collections/papa.html" },
+  { "id": "baby-shower", "label": "Baby Shower", "icon": "baby", "href": "/collections/baby-shower.html" },
+  { "id": "aniversario", "label": "Aniversario", "icon": "rings", "href": "/collections/aniversario.html" },
+  { "id": "navidad", "label": "Navidad", "icon": "tree", "href": "/collections/navidad.html" },
+  { "id": "corporativo", "label": "Regalos Corporativos", "icon": "gift-corporate", "href": "/collections/corporativo.html" }
+]

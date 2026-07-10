@@ -1,0 +1,16 @@
+# Dependencies (none are committed; installed on demand only for local preview)
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+*.log

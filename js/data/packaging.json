@@ -1,0 +1,8 @@
+[
+  { "icon": "box", "title": "Caja Premium", "text": "Rígida, forrada y lista para emocionar." },
+  { "icon": "bag", "title": "Bolsa de Lujo", "text": "Con asas de cordón y acabado satinado." },
+  { "icon": "pouch", "title": "Bolsa de Terciopelo", "text": "Suave al tacto, para tus piezas más finas." },
+  { "icon": "card", "title": "Tarjeta de Regalo", "text": "Una dedicatoria escrita a mano, para ti." },
+  { "icon": "ribbon", "title": "Cinta Personalizada", "text": "Grabada con el nombre Aura Fev." },
+  { "icon": "wrap", "title": "Envoltura Premium", "text": "Papel de seda con el sello de la casa." }
+]

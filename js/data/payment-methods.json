@@ -1,0 +1,9 @@
+[
+  { "id": "visa", "label": "Visa", "kind": "card-brand" },
+  { "id": "mastercard", "label": "Mastercard", "kind": "card-brand" },
+  { "id": "yape", "label": "Yape", "kind": "wallet" },
+  { "id": "plin", "label": "Plin", "kind": "wallet" },
+  { "id": "paypal", "label": "PayPal", "kind": "gateway" },
+  { "id": "izipay", "label": "Izipay", "kind": "gateway" },
+  { "id": "niubiz", "label": "Niubiz", "kind": "gateway" }
+]

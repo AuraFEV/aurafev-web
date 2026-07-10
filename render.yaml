@@ -1,0 +1,80 @@
+# ==========================================================================
+# Render Blueprint — Aura Fev static site
+# https://render.com/docs/blueprint-spec
+#
+# Deploy: push this repo to GitHub, then in Render click
+# New -> Blueprint and select the repo. Render reads this file and
+# provisions the service below automatically.
+# ==========================================================================
+services:
+  - type: web
+    name: aura-fev
+    runtime: static
+    plan: free
+    branch: main
+    buildCommand: npm install && npm run build
+    staticPublishPath: .
+
+    # Attach the domain purchased for the brand once the service exists.
+    # (Render will show you the DNS records to add at your registrar.)
+    domains:
+      - www.aurafev.com
+      - aurafev.com
+
+    envVars:
+      - key: SITE_URL
+        value: https://www.aurafev.com
+      - key: SITE_NAME
+        value: Aura Fev
+      - key: WHATSAPP_NUMBER
+        sync: false
+      - key: API_BASE_URL
+        value: ""
+      - key: PAYMENT_CARD_GATEWAY
+        value: izipay
+      - key: IZIPAY_PUBLIC_KEY
+        sync: false
+      - key: NIUBIZ_MERCHANT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: YAPE_MERCHANT_CODE
+        sync: false
+      - key: PLIN_MERCHANT_CODE
+        sync: false
+      - key: ENABLE_PAYMENT_VISA
+        value: "true"
+      - key: ENABLE_PAYMENT_MASTERCARD
+        value: "true"
+      - key: ENABLE_PAYMENT_YAPE
+        value: "true"
+      - key: ENABLE_PAYMENT_PLIN
+        value: "true"
+      - key: ENABLE_PAYMENT_PAYPAL
+        value: "false"
+      - key: ENABLE_PAYMENT_IZIPAY
+        value: "true"
+      - key: ENABLE_PAYMENT_NIUBIZ
+        value: "false"
+      - key: GA_MEASUREMENT_ID
+        sync: false
+
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /css/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /js/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /favicon/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /index.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate

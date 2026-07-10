@@ -1,0 +1,69 @@
+/**
+ * typography.css
+ * Type scale and text treatments shared across every page.
+ */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+em, .italic {
+  font-style: italic;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+.eyebrow--center {
+  justify-content: center;
+}
+
+.eyebrow--center::before {
+  display: none;
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  line-height: 1.15;
+  margin-top: 16px;
+}
+
+.section-head p {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: var(--text-soft);
+  font-weight: 300;
+}
+
+.section-head--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
