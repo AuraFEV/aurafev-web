@@ -1,0 +1,47 @@
+/**
+ * empty-state.css
+ * Reusable "this isn't built yet" pattern — used by proximamente.html
+ * today, and by any future stub page, so the site never shows a bare
+ * 404 for a section that's genuinely just not finished.
+ */
+.empty-state {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px var(--pad) 100px;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 50% 35%, rgba(201, 164, 106, 0.14), transparent 70%),
+    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.empty-state-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+}
+
+.empty-state h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.empty-state .sub {
+  margin: 22px auto 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  max-width: 440px;
+  font-weight: 300;
+}
+
+.empty-state-actions {
+  margin-top: 38px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

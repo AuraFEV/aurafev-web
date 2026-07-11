@@ -1,19 +1,52 @@
 {
   "tienda": [
-    { "label": "Colecciones", "href": "#colecciones" },
-    { "label": "Por Ocasión", "href": "#ocasiones" },
-    { "label": "Regalos Corporativos", "href": "/collections/corporativo.html" },
-    { "label": "Tarjetas de Regalo", "href": "/gift-cards.html" }
+    {
+      "label": "Colecciones",
+      "href": "#colecciones"
+    },
+    {
+      "label": "Por Ocasión",
+      "href": "#ocasiones"
+    },
+    {
+      "label": "Regalos Corporativos",
+      "href": "/proximamente.html"
+    },
+    {
+      "label": "Tarjetas de Regalo",
+      "href": "/proximamente.html"
+    }
   ],
   "ayuda": [
-    { "label": "Preguntas Frecuentes", "href": "#faq" },
-    { "label": "Envíos", "href": "/envios.html" },
-    { "label": "Cambios y Devoluciones", "href": "/cambios.html" },
-    { "label": "Contacto", "href": "/contacto.html" }
+    {
+      "label": "Preguntas Frecuentes",
+      "href": "#faq"
+    },
+    {
+      "label": "Envíos",
+      "href": "/proximamente.html"
+    },
+    {
+      "label": "Cambios y Devoluciones",
+      "href": "/proximamente.html"
+    },
+    {
+      "label": "Contacto",
+      "href": "/proximamente.html"
+    }
   ],
   "empresa": [
-    { "label": "Nuestra Historia", "href": "#experiencia" },
-    { "label": "Sostenibilidad", "href": "/sostenibilidad.html" },
-    { "label": "Trabaja con Nosotros", "href": "/carreras.html" }
+    {
+      "label": "Nuestra Historia",
+      "href": "#experiencia"
+    },
+    {
+      "label": "Sostenibilidad",
+      "href": "/proximamente.html"
+    },
+    {
+      "label": "Trabaja con Nosotros",
+      "href": "/proximamente.html"
+    }
   ]
 }

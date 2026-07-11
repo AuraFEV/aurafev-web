@@ -318,7 +318,17 @@ Convenciones a seguir al añadir cada uno:
 - Páginas nuevas van en la raíz (`producto.html`, `carrito.html`,
   `cuenta.html`...), cada una con su propio `<script type="module"
   src="/js/pages/nombre.js">` de entrada — igual que `js/main.js` para
-  la home.
+  la home. El entry file de cada página llama primero a
+  `initSiteChrome()` (definido en `js/pages/shared.js`), que se encarga
+  del nav, el newsletter, WhatsApp, analítica y el footer — así ninguna
+  página reimplementa esa lógica. Después de eso, cada entry file solo
+  agrega lo que le es propio (ver `js/main.js` como referencia).
+- Mientras una página listada en la navegación o en `js/data/*.json`
+  todavía no exista, su `href` apunta a `/proximamente.html` en vez de a
+  una ruta que daría 404. Es una página real (mismo header/footer que el
+  resto del sitio, con `noindex` para no ensuciar el SEO) — no un enlace
+  roto. A medida que cada página se construye, se actualiza su `href` en
+  el JSON o el HTML correspondiente para que apunte a la página real.
 - Contenido que cambie con frecuencia va como JSON en `js/data/` y se
   pinta con una función en `js/render/`.
 - Cualquier llamada a un servicio externo pasa por `js/services/`, nunca
@@ -339,6 +349,9 @@ este repositorio de frontend.
 
 ## Checklist antes de lanzar a producción
 
+- [ ] Ir reemplazando los `href="/proximamente.html"` por páginas reales
+      a medida que se construyen (buscador, carrito, colecciones
+      individuales, envíos, términos, privacidad...)
 - [ ] Reemplazar los badges de texto de pago por los logotipos oficiales
       (`assets/icons/payments/README.md`)
 - [ ] Cargar fotografía real de producto/lifestyle en `images/`

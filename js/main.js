@@ -1,66 +1,39 @@
 /**
  * js/main.js
- * Single entry point for the homepage, loaded as `<script type="module">`.
- * Wires up UI components and kicks off the JSON-driven render modules.
- * Other pages (product, cart, checkout, account...) will get their own
- * thin entry file that imports only what they need from js/services and
- * js/components — this file should stay specific to the homepage.
+ * Entry point for the homepage, loaded as `<script type="module">`.
+ * Site-wide chrome (nav, newsletter, footer, WhatsApp, analytics) comes
+ * from js/pages/shared.js — this file only handles what's specific to
+ * the home: the hero parallax and the JSON-driven sections that don't
+ * appear anywhere else.
  */
 import { qs } from './utils/dom.js';
-import { initNav } from './components/nav.js';
+import { initSiteChrome } from './pages/shared.js';
 import { initReveal } from './components/reveal.js';
 import { initHeroParallax } from './components/heroParallax.js';
-import { initNewsletterForm } from './components/newsletterForm.js';
 
 import { renderOccasions } from './render/renderOccasions.js';
 import { renderWhyCards } from './render/renderWhyCards.js';
 import { renderPackaging } from './render/renderPackaging.js';
 import { renderTestimonials } from './render/renderTestimonials.js';
 import { renderFaq } from './render/renderFaq.js';
-import { renderFooterNav } from './render/renderFooterNav.js';
-import { renderPaymentBadges } from './render/renderPaymentBadges.js';
 
-import { initAnalytics, trackPageView } from './services/analytics/analyticsService.js';
-import { getSupportLink } from './services/whatsapp/whatsappService.js';
-
-async function renderContent() {
+async function renderHomeContent() {
   await Promise.all([
     renderOccasions(qs('#occasionsGrid')),
     renderWhyCards(qs('#whyGrid')),
     renderPackaging(qs('#packagingGrid')),
     renderTestimonials(qs('#testimonialsGrid')),
-    renderFaq(qs('#faqList')),
-    renderFooterNav({
-      tienda: qs('#footerTienda'),
-      ayuda: qs('#footerAyuda'),
-      empresa: qs('#footerEmpresa')
-    }),
-    renderPaymentBadges(qs('#paymentBadges'))
+    renderFaq(qs('#faqList'))
   ]);
-
-  // Re-run scroll-reveal now that JSON-driven sections exist in the DOM.
-  initReveal();
-}
-
-function wireWhatsappLinks() {
-  const link = getSupportLink();
-  if (!link) return;
-  document.querySelectorAll('[data-whatsapp-link]').forEach((el) => {
-    el.href = link;
-  });
 }
 
 async function init() {
-  initNav();
   initHeroParallax();
-  initNewsletterForm();
-  initAnalytics();
-  trackPageView();
-  wireWhatsappLinks();
+  await initSiteChrome();
+  await renderHomeContent();
 
-  await renderContent();
-
-  // Static (non-JSON-driven) sections can reveal immediately.
+  // Reveal-on-scroll runs last, once every section (including the
+  // JSON-driven ones) actually exists in the DOM.
   initReveal();
 }
 

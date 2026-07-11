@@ -1,11 +1,56 @@
 [
-  { "id": "pareja", "label": "Para mi pareja", "icon": "heart", "href": "/collections/pareja.html" },
-  { "id": "cumpleanos", "label": "Cumpleaños", "icon": "cake", "href": "/collections/cumpleanos.html" },
-  { "id": "graduacion", "label": "Graduación", "icon": "graduation", "href": "/collections/graduacion.html" },
-  { "id": "mama", "label": "Para mamá", "icon": "mother", "href": "/collections/mama.html" },
-  { "id": "papa", "label": "Para papá", "icon": "father", "href": "/collections/papa.html" },
-  { "id": "baby-shower", "label": "Baby Shower", "icon": "baby", "href": "/collections/baby-shower.html" },
-  { "id": "aniversario", "label": "Aniversario", "icon": "rings", "href": "/collections/aniversario.html" },
-  { "id": "navidad", "label": "Navidad", "icon": "tree", "href": "/collections/navidad.html" },
-  { "id": "corporativo", "label": "Regalos Corporativos", "icon": "gift-corporate", "href": "/collections/corporativo.html" }
+  {
+    "id": "pareja",
+    "label": "Para mi pareja",
+    "icon": "heart",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "cumpleanos",
+    "label": "Cumpleaños",
+    "icon": "cake",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "graduacion",
+    "label": "Graduación",
+    "icon": "graduation",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "mama",
+    "label": "Para mamá",
+    "icon": "mother",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "papa",
+    "label": "Para papá",
+    "icon": "father",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "baby-shower",
+    "label": "Baby Shower",
+    "icon": "baby",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "aniversario",
+    "label": "Aniversario",
+    "icon": "rings",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "navidad",
+    "label": "Navidad",
+    "icon": "tree",
+    "href": "/proximamente.html"
+  },
+  {
+    "id": "corporativo",
+    "label": "Regalos Corporativos",
+    "icon": "gift-corporate",
+    "href": "/proximamente.html"
+  }
 ]

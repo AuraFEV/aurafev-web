@@ -99,6 +99,14 @@
   50% { transform: scaleY(0.6); opacity: 0.2; }
 }
 
+/* On short viewports the centered hero content sits close enough to the
+   bottom edge that the scroll cue can overlap the CTAs (seen in QA on a
+   ~700px-tall browser window). The cue is a decorative nice-to-have, not
+   essential — hide it rather than risk the collision. */
+@media (max-height: 700px) {
+  .scroll-cue { display: none; }
+}
+
 .insta-head {
   display: flex;
   justify-content: space-between;
