@@ -1,0 +1,18 @@
+{
+  "name": "aura-fev-chat-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend mínimo para el asistente Laura — el único trabajo de este servicio es guardar la llave de la API de Claude en el servidor y hacer de intermediario entre el sitio y la API de Anthropic. No procesa pagos ni WhatsApp — eso es un servicio aparte, más adelante.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  }
+}

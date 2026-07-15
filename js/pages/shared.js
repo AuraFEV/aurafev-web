@@ -14,6 +14,7 @@ import { qs } from '../utils/dom.js';
 import { initNav } from '../components/nav.js';
 import { initNewsletterForm } from '../components/newsletterForm.js';
 import { wireWhatsappLinks } from '../components/whatsappLinks.js';
+import { initChatWidget } from '../components/chatWidget.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
@@ -24,6 +25,7 @@ export async function initSiteChrome() {
   initAnalytics();
   trackPageView();
   wireWhatsappLinks();
+  initChatWidget();
 
   await Promise.all([
     renderFooterNav({

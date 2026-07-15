@@ -33,7 +33,10 @@ const PATHS = {
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>',
   tiktok: '<path d="M14 3v11a3 3 0 1 1-3-3"/><path d="M14 3c0 3 2 5 5 5"/>',
   facebook: '<path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3V3z"/>',
-  chevron: '<path d="M9 6l6 6-6 6"/>'
+  chevron: '<path d="M9 6l6 6-6 6"/>',
+  'chat-bubble': '<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.2 0-2.3-.25-3.3-.7L4 21l1.4-4.3A8.5 8.5 0 1 1 21 11.5z"/>',
+  send: '<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>',
+  close: '<path d="M6 6l12 12M18 6L6 18"/>'
 };
 
 /**

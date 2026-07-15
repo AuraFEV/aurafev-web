@@ -81,3 +81,25 @@ services:
       - path: /index.html
         name: Cache-Control
         value: public, max-age=0, must-revalidate
+
+  # ------------------------------------------------------------------
+  # Laura — chat backend. Documented here for reference, but per
+  # backend/README.md this should be CREATED MANUALLY in the Render
+  # dashboard (New -> Web Service, not New -> Blueprint), since the
+  # site above isn't Blueprint-managed and syncing this file as a
+  # Blueprint risks creating a duplicate of it.
+  # ------------------------------------------------------------------
+  - type: web
+    name: aura-fev-chat-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGIN
+        value: https://www.aurafev.com
+      - key: MODEL_ID
+        value: claude-sonnet-5

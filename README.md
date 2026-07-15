@@ -23,10 +23,11 @@ crecer hacia una tienda completa sin rehacer la arquitectura.
 6. [Arquitectura y decisiones](#arquitectura-y-decisiones)
 7. [Pasarela de pagos](#pasarela-de-pagos)
 8. [WhatsApp Business API](#whatsapp-business-api)
-9. [Backend futuro](#backend-futuro)
-10. [Módulos futuros previstos](#módulos-futuros-previstos)
-11. [Por qué no hay requirements.txt](#por-qué-no-hay-requirementstxt)
-12. [Checklist antes de lanzar a producción](#checklist-antes-de-lanzar-a-producción)
+9. [Asistente Laura (chat con IA)](#asistente-laura-chat-con-ia)
+10. [Backend futuro](#backend-futuro)
+11. [Módulos futuros previstos](#módulos-futuros-previstos)
+12. [Por qué no hay requirements.txt](#por-qué-no-hay-requirementstxt)
+13. [Checklist antes de lanzar a producción](#checklist-antes-de-lanzar-a-producción)
 
 ---
 
@@ -276,13 +277,48 @@ deliberadamente excluidos de `scripts/generate-config.js`.
 
 ---
 
+## Asistente Laura (chat con IA)
+
+El botón flotante del sitio (`js/components/chatWidget.js`) conecta con
+un asistente de IA (Claude) llamado Laura. A diferencia de todo lo
+demás en este README, esta pieza **sí tiene un backend real y
+desplegado**: `backend/`, un segundo servicio de Render, completamente
+aparte del sitio estático.
+
+- **Por qué existe un backend solo para esto:** la llave de la API de
+  Claude (`ANTHROPIC_API_KEY`) es secreta — no puede vivir en
+  `js/config` como el resto de la configuración pública. `backend/`
+  es el servicio más pequeño posible que resuelve exactamente ese
+  problema: recibe el mensaje del navegador, le agrega el system
+  prompt de Laura, llama a Claude con la llave guardada del lado del
+  servidor, y devuelve la respuesta. No guarda conversaciones, no
+  tiene base de datos, no procesa pagos ni WhatsApp — ver
+  `backend/README.md` para el detalle y el paso a paso de despliegue.
+- **De dónde saca Laura lo que sabe:** `backend/knowledge.js` lee los
+  mismos archivos `js/data/*.json` que usa el sitio (ocasiones,
+  empaque, FAQ, por qué Aura Fev) — una sola fuente de verdad. Nunca
+  se le da `testimonials.json`, porque esos testimonios son
+  placeholder, no reales — ver la nota de honestidad en la sección de
+  arquitectura.
+- **Qué es lo único que NO hace todavía:** hablar de productos o
+  precios específicos, porque el catálogo real no existe aún. El
+  `systemPrompt.js` le instruye explícitamente ser honesta sobre eso y
+  ofrecer WhatsApp en su lugar — no inventar.
+- Si `API_BASE_URL` no está configurado, `chatWidget.js` no dibuja
+  nada — el sitio se ve exactamente igual que sin esta pieza.
+
+---
+
 ## Backend futuro
 
-Este repositorio es **solo el frontend**. Varias piezas (checkout real,
-cuentas de cliente, historial de pedidos, reseñas, cupones, tarjetas de
-regalo, dashboard de administración, inventario, envío de WhatsApp/email)
-necesitan un servidor que guarde datos y hable con APIs de terceros
-usando credenciales secretas.
+`API_BASE_URL` ya no es hipotético — hoy apunta al backend de Laura
+descrito arriba. Lo que sigue siendo frontend-only son las piezas más
+grandes: checkout real, cuentas de cliente, historial de pedidos,
+reseñas, cupones, tarjetas de regalo, dashboard de administración,
+inventario, envío de WhatsApp/email. Esas necesitan un backend con
+base de datos y credenciales de pasarelas de pago — puede terminar
+siendo un tercer servicio de Render, o una ampliación del backend de
+Laura, según convenga cuando llegue el momento.
 
 El frontend ya está preparado para ese momento:
 
@@ -295,12 +331,6 @@ El frontend ya está preparado para ese momento:
 - Cada `send*()` de `whatsappService.js` y cada `createCheckoutSession()`
   de los proveedores de pago ya asumen que existe un endpoint de backend
   correspondiente.
-
-Cuando se construya ese backend (Node/Express, un runtime serverless, lo
-que se decida), puede vivir en un repositorio/servicio de Render aparte
-— un `type: web` con `runtime: node` adicional en un `render.yaml`
-propio — sin tocar este sitio estático más que apuntar `API_BASE_URL` a
-su URL.
 
 ---
 
@@ -349,6 +379,8 @@ este repositorio de frontend.
 
 ## Checklist antes de lanzar a producción
 
+- [ ] Crear el servicio `backend/` en Render (Web Service manual, no
+      Blueprint) y completar `ANTHROPIC_API_KEY` para que Laura funcione
 - [ ] Ir reemplazando los `href="/proximamente.html"` por páginas reales
       a medida que se construyen (buscador, carrito, colecciones
       individuales, envíos, términos, privacidad...)
