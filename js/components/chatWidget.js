@@ -14,7 +14,7 @@ import { icon } from '../utils/icons.js';
 import { isChatConfigured, sendChatMessage } from '../services/chat/chatService.js';
 import { getSupportLink } from '../services/whatsapp/whatsappService.js';
 
-const GREETING = '¡Hola! Soy Laura, la asesora virtual de Aura Fev 💛 ¿En qué ocasión estás pensando regalar algo?';
+const GREETING = '¡Hola! Soy Laura, la asesora virtual de Aura Fev 💛 ¿Para qué ocasión estás pensando regalar algo?';
 
 export function initChatWidget() {
   const root = qs('#chatWidgetRoot');
@@ -68,12 +68,11 @@ export function initChatWidget() {
 
   function addErrorBubble() {
     const bubble = createElement('div', { class: 'chat-bubble from-laura' });
-    bubble.textContent = 'No pude responder justo ahora. ';
+    bubble.textContent = '¡Uy, se me cruzó un cable justo ahora! 💛 No quiero dejarte sin respuesta — ';
     const link = getSupportLink('Hola, vengo del chat de la web y necesito ayuda.');
     if (link) {
       const a = createElement('a', { class: 'whatsapp-fallback', href: link, target: '_blank', rel: 'noopener' });
-      a.textContent = 'Escríbenos por WhatsApp →';
-      bubble.appendChild(document.createElement('br'));
+      a.textContent = 'sigamos por WhatsApp →';
       bubble.appendChild(a);
     }
     messagesEl.appendChild(bubble);

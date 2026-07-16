@@ -60,7 +60,7 @@ app.post('/api/chat', async (req, res) => {
   const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress;
 
   if (isRateLimited(ip)) {
-    return res.status(429).json({ error: 'Demasiados mensajes. Intenta de nuevo en un rato, o escríbenos por WhatsApp.' });
+    return res.status(429).json({ error: 'Estoy conversando con muchas personas a la vez justo ahora 💛 Intenta de nuevo en un momento, o escríbenos por WhatsApp.' });
   }
 
   const { messages } = req.body || {};
@@ -89,7 +89,7 @@ app.post('/api/chat', async (req, res) => {
     res.json({ reply: text });
   } catch (err) {
     console.error('[api/chat] Anthropic API error:', err.message);
-    res.status(502).json({ error: 'Laura no está disponible en este momento. Intenta de nuevo o escríbenos por WhatsApp.' });
+    res.status(502).json({ error: 'Se me cruzó un cable justo ahora. Intenta de nuevo en un momento, o escríbenos por WhatsApp.' });
   }
 });
 
