@@ -40,7 +40,7 @@ estático (monorepo). Se crea como un servicio **separado** en Render:
 5. **Build Command:** `npm install`
 6. **Start Command:** `npm start`
 7. En **Environment**, agrega `ANTHROPIC_API_KEY` (tu llave real) y
-   `ALLOWED_ORIGIN` (`https://www.aurafev.com`).
+   `ALLOWED_ORIGIN` (`https://www.aurafev.com,https://aurafev.com` — ambos, con y sin "www", separados por coma).
 8. Una vez desplegado, Render te da una URL tipo
    `https://aura-fev-chat.onrender.com` — esa es la que va en
    `API_BASE_URL` del sitio estático (variable de entorno del OTRO

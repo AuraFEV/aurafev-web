@@ -19,7 +19,13 @@ import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt } from './systemPrompt.js';
 
 const PORT = process.env.PORT || 3001;
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'https://www.aurafev.com';
+// ALLOWED_ORIGIN accepts a comma-separated list, because the site is
+// reachable both as www.aurafev.com and the naked aurafev.com — a
+// visitor on either one needs the chat to work.
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGIN || 'https://www.aurafev.com')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
 const MODEL_ID = process.env.MODEL_ID || 'claude-sonnet-5';
 const MAX_OUTPUT_TOKENS = 400;
 const MAX_HISTORY_MESSAGES = 20; // trims runaway-long conversations before they reach the API
@@ -33,7 +39,16 @@ const systemPrompt = buildSystemPrompt();
 
 const app = express();
 app.use(express.json({ limit: '32kb' }));
-app.use(cors({ origin: ALLOWED_ORIGIN }));
+app.use(cors({
+  origin(origin, callback) {
+    // No origin header = server-to-server or curl/health-check calls; allow those.
+    if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin no permitido: ${origin}`));
+    }
+  }
+}));
 
 // --- very small in-memory rate limiter -------------------------------
 // Good enough for this scale (single instance, low volume). If this
@@ -95,6 +110,6 @@ app.post('/api/chat', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`[server] Laura backend listening on port ${PORT}`);
-  console.log(`[server] Allowed origin: ${ALLOWED_ORIGIN}`);
+  console.log(`[server] Allowed origins: ${ALLOWED_ORIGINS.join(', ')}`);
   console.log(`[server] Model: ${MODEL_ID}`);
 });
