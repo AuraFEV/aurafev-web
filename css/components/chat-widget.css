@@ -100,6 +100,24 @@
   display: inline-block;
 }
 
+.chat-whatsapp-bar {
+  padding: 9px 16px;
+  background: rgba(201, 164, 106, 0.1);
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-whatsapp-bar a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  color: var(--bronze);
+  transition: color var(--duration-fast);
+}
+
+.chat-whatsapp-bar a:hover { color: var(--gold); }
+.chat-whatsapp-bar svg { width: 15px; height: 15px; flex-shrink: 0; }
+
 .chat-messages {
   flex: 1;
   overflow-y: auto;

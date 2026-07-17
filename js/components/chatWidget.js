@@ -32,6 +32,12 @@ export function initChatWidget() {
             <div class="status">En línea</div>
           </div>
         </div>
+        <div class="chat-whatsapp-bar" id="chatWhatsappBar" hidden>
+          <a href="#" id="chatWhatsappLink" target="_blank" rel="noopener">
+            ${icon('chat-bubble')}
+            <span>¿Prefieres hablar directo? Escríbenos por WhatsApp</span>
+          </a>
+        </div>
         <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
         <form class="chat-input-row" id="chatForm">
           <textarea id="chatInput" rows="1" placeholder="Escribe tu mensaje..." aria-label="Tu mensaje"></textarea>
@@ -50,6 +56,14 @@ export function initChatWidget() {
   const messagesEl = qs('#chatMessages', root);
   const form = qs('#chatForm', root);
   const input = qs('#chatInput', root);
+  const whatsappBar = qs('#chatWhatsappBar', root);
+  const whatsappLink = qs('#chatWhatsappLink', root);
+
+  const whatsappHref = getSupportLink('Hola, vengo del chat de la web de Aura Fev.');
+  if (whatsappHref) {
+    whatsappLink.href = whatsappHref;
+    whatsappBar.hidden = false;
+  }
 
   function addBubble(role, text) {
     const bubble = createElement('div', { class: `chat-bubble from-${role === 'user' ? 'user' : 'laura'}` });
@@ -84,6 +98,9 @@ export function initChatWidget() {
     if (hasGreeted) return;
     hasGreeted = true;
     addBubble('assistant', GREETING);
+    // Also add it to history — otherwise Claude has no idea a greeting
+    // was already shown and re-introduces itself on the first reply.
+    history.push({ role: 'assistant', content: GREETING });
   }
 
   on(launcher, 'click', () => {
