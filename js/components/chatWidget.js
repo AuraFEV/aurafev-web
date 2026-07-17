@@ -59,11 +59,26 @@ export function initChatWidget() {
   const whatsappBar = qs('#chatWhatsappBar', root);
   const whatsappLink = qs('#chatWhatsappLink', root);
 
-  const whatsappHref = getSupportLink('Hola, vengo del chat de la web de Aura Fev.');
-  if (whatsappHref) {
-    whatsappLink.href = whatsappHref;
-    whatsappBar.hidden = false;
+  function buildWhatsappMessage() {
+    const userMessages = history.filter((m) => m.role === 'user').map((m) => m.content);
+    if (userMessages.length === 0) {
+      return 'Hola, vengo del chat de la web de Aura Fev.';
+    }
+    // Carry what the person already told Laura, so they don't have to
+    // retype it for a human. Capped so the WhatsApp link doesn't break.
+    const resumen = userMessages.slice(-3).join(' / ').slice(0, 300);
+    return `Hola, vengo del chat de la web de Aura Fev. Le comenté a Laura: "${resumen}"`;
   }
+
+  function refreshWhatsappLink() {
+    const href = getSupportLink(buildWhatsappMessage());
+    if (href) {
+      whatsappLink.href = href;
+      whatsappBar.hidden = false;
+    }
+  }
+
+  refreshWhatsappLink();
 
   function addBubble(role, text) {
     const bubble = createElement('div', { class: `chat-bubble from-${role === 'user' ? 'user' : 'laura'}` });
@@ -83,7 +98,7 @@ export function initChatWidget() {
   function addErrorBubble() {
     const bubble = createElement('div', { class: 'chat-bubble from-laura' });
     bubble.textContent = '¡Uy, se me cruzó un cable justo ahora! 💛 No quiero dejarte sin respuesta — ';
-    const link = getSupportLink('Hola, vengo del chat de la web y necesito ayuda.');
+    const link = getSupportLink(buildWhatsappMessage());
     if (link) {
       const a = createElement('a', { class: 'whatsapp-fallback', href: link, target: '_blank', rel: 'noopener' });
       a.textContent = 'sigamos por WhatsApp →';
@@ -127,6 +142,7 @@ export function initChatWidget() {
     input.value = '';
     addBubble('user', text);
     history.push({ role: 'user', content: text });
+    refreshWhatsappLink();
 
     const typingBubble = addTypingBubble();
     const sendBtn = qs('.chat-send-btn', form);
