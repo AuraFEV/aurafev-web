@@ -87,17 +87,19 @@
       "Cuadro decorativo",
       "2 copas"
     ],
-    "photoPending": true,
+    "photoPending": false,
     "variants": [
       {
         "id": "base",
         "label": "Ferrero clásico",
-        "priceOverride": 129
+        "priceOverride": 129,
+        "image": "/images/products/clasica-base.jpg"
       },
       {
         "id": "ferrero-grande",
         "label": "Ferrero grande (upgrade)",
-        "priceOverride": 149
+        "priceOverride": 149,
+        "image": "/images/products/clasica-ferrero-grande.jpg"
       }
     ]
   },
@@ -118,15 +120,17 @@
       "Cuadro decorativo",
       "Fondo decorativo + letrero dorado personalizado"
     ],
-    "photoPending": true,
+    "photoPending": false,
     "variants": [
       {
         "id": "vino",
-        "label": "Vino"
+        "label": "Vino",
+        "image": "/images/products/premium-vino.jpg"
       },
       {
         "id": "sour",
-        "label": "Tabernero Sour"
+        "label": "Tabernero Sour",
+        "image": "/images/products/premium-sour.jpg"
       }
     ],
     "messageOptions": [
@@ -153,11 +157,12 @@
       "Cuadro decorativo",
       "Fondo decorativo + letrero dorado personalizado"
     ],
-    "photoPending": true,
+    "photoPending": false,
     "variants": [
       {
         "id": "unica",
-        "label": "Edición única"
+        "label": "Edición única",
+        "image": "/images/products/luxury-unica.jpg"
       }
     ],
     "messageOptions": [
