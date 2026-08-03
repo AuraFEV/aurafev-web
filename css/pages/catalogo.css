@@ -1,0 +1,131 @@
+/**
+ * catalogo.css
+ * The 5-line product grid (/catalogo.html) and the product card it's
+ * built from — shared with the "you might also like" pattern if one
+ * gets added to producto.html later.
+ */
+
+.catalog-hero .section-head { max-width: 640px; }
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.prod-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  transition: transform var(--duration-slow) var(--ease),
+              box-shadow var(--duration-slow) var(--ease),
+              border-color var(--duration-slow) var(--ease);
+}
+
+.prod-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--accent);
+}
+
+.prod-card-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.prod-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.prod-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.prod-photo-pending {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(201, 164, 106, 0.14), transparent 70%),
+    var(--bg-primary);
+}
+
+.prod-photo-pending .aura-rings-sm { width: 90px; height: 90px; }
+.prod-photo-pending span {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+
+.prod-photo-pending--lg { min-height: 420px; }
+.prod-photo-pending--lg .aura-rings-sm { width: 140px; height: 140px; }
+
+.prod-card-body {
+  padding: 24px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.prod-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.prod-card-body p {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  font-weight: 300;
+  flex: 1;
+}
+
+.prod-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.prod-price {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+.prod-link {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  transition: gap var(--duration-fast);
+}
+
+.prod-card:hover .prod-link { color: var(--gold); }
+
+.prod-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-soft);
+  padding: 60px 20px;
+}

@@ -9,7 +9,7 @@
     "id": "cumpleanos",
     "label": "Cumpleaños",
     "icon": "cake",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=cumpleanos"
   },
   {
     "id": "graduacion",
@@ -39,7 +39,7 @@
     "id": "aniversario",
     "label": "Aniversario",
     "icon": "rings",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=aniversario"
   },
   {
     "id": "navidad",

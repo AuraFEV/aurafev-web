@@ -1,0 +1,170 @@
+[
+  {
+    "slug": "esencial",
+    "line": "Esencial",
+    "badge": null,
+    "price": 89,
+    "compareAt": null,
+    "occasion": ["cumpleanos"],
+    "tagline": "Ideal para un detalle especial.",
+    "description": "Caja de madera Aura Fev con peluche, Coronita, Ferrero Rocher y un globo decorativo. El punto de partida perfecto para celebrar sin complicarte.",
+    "includes": [
+      "Caja de madera Aura Fev",
+      "Peluche (oso o perrito, según variante)",
+      "Cerveza Coronita",
+      "Ferrero Rocher",
+      "Globo decorativo (según variante)"
+    ],
+    "photoPending": false,
+    "variants": [
+      {
+        "id": "oso",
+        "label": "Oso + Coronita",
+        "image": "/images/products/esencial-oso.jpg"
+      },
+      {
+        "id": "perrito",
+        "label": "Perrito + Coronita",
+        "image": "/images/products/esencial-perrito.jpg"
+      },
+      {
+        "id": "minimal",
+        "label": "Minimal (sin globo)",
+        "image": "/images/products/esencial-oso.jpg",
+        "note": "Misma composición que Oso + Coronita, sin globo — un diseño más limpio, no una versión reducida."
+      }
+    ]
+  },
+  {
+    "slug": "signature",
+    "line": "Signature",
+    "badge": "Nuestro más vendido",
+    "price": 99,
+    "compareAt": null,
+    "occasion": ["cumpleanos"],
+    "tagline": "Nuestro producto más vendido.",
+    "description": "El mismo diseño en base circular, con tres bebidas para elegir. Tú eliges el sabor, nosotros nos encargamos del resto.",
+    "includes": [
+      "Base circular Aura Fev",
+      "Peluche oso",
+      "Bebida a elección (Riccadonna, Corona o Tabernero Sour)",
+      "Ferrero Rocher",
+      "Globo estrella dorado"
+    ],
+    "photoPending": false,
+    "variants": [
+      {
+        "id": "ricadonna",
+        "label": "Riccadonna",
+        "image": "/images/products/signature-ricadonna.jpg"
+      },
+      {
+        "id": "corona",
+        "label": "Corona",
+        "image": "/images/products/signature-corona.jpg"
+      },
+      {
+        "id": "sour",
+        "label": "Tabernero Sour",
+        "image": "/images/products/signature-sour.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "clasica",
+    "line": "Clásica Aura",
+    "badge": null,
+    "price": 129,
+    "compareAt": null,
+    "occasion": ["aniversario"],
+    "tagline": "El equilibrio perfecto entre elegancia y precio.",
+    "description": "Nuestra caja insignia: madera natural, vino, copas y un cuadro decorativo. El producto que mejor representa a Aura Fev.",
+    "includes": [
+      "Caja de madera Aura Fev",
+      "Vino",
+      "Ferrero Rocher",
+      "Peluche oso",
+      "Cuadro decorativo",
+      "2 copas"
+    ],
+    "photoPending": true,
+    "variants": [
+      {
+        "id": "base",
+        "label": "Ferrero clásico",
+        "priceOverride": 129
+      },
+      {
+        "id": "ferrero-grande",
+        "label": "Ferrero grande (upgrade)",
+        "priceOverride": 149
+      }
+    ]
+  },
+  {
+    "slug": "premium",
+    "line": "Premium",
+    "badge": null,
+    "price": 159,
+    "compareAt": null,
+    "occasion": ["aniversario"],
+    "tagline": "Una experiencia para celebrar momentos inolvidables.",
+    "description": "Vino o Sour a elección, con fondo decorativo y letrero dorado. Personaliza el mensaje para hacerlo aún más tuyo.",
+    "includes": [
+      "Caja de madera Aura Fev",
+      "Vino o Tabernero Sour, a elección",
+      "Ferrero Rocher",
+      "Peluche oso",
+      "Cuadro decorativo",
+      "Fondo decorativo + letrero dorado personalizado"
+    ],
+    "photoPending": true,
+    "variants": [
+      {
+        "id": "vino",
+        "label": "Vino"
+      },
+      {
+        "id": "sour",
+        "label": "Tabernero Sour"
+      }
+    ],
+    "messageOptions": [
+      { "id": "feliz-aniversario", "label": "Feliz Aniversario", "available": true },
+      { "id": "feliz-cumpleanos", "label": "Feliz Cumpleaños", "available": false },
+      { "id": "te-amo", "label": "Te Amo", "available": false },
+      { "id": "graduacion", "label": "Graduación", "available": false }
+    ]
+  },
+  {
+    "slug": "luxury",
+    "line": "Luxury",
+    "badge": "Edición insignia",
+    "price": 259,
+    "compareAt": null,
+    "occasion": ["aniversario"],
+    "tagline": "Nuestra edición más exclusiva.",
+    "description": "Jack Daniel's, Ferrero Rocher grande, cuadro y fondo decorativo con mensaje personalizado. La experiencia Aura Fev al máximo nivel.",
+    "includes": [
+      "Caja de madera Aura Fev",
+      "Jack Daniel's",
+      "Ferrero Rocher grande",
+      "Peluche oso",
+      "Cuadro decorativo",
+      "Fondo decorativo + letrero dorado personalizado"
+    ],
+    "photoPending": true,
+    "variants": [
+      {
+        "id": "unica",
+        "label": "Edición única"
+      }
+    ],
+    "messageOptions": [
+      { "id": "feliz-aniversario", "label": "Feliz Aniversario", "available": true },
+      { "id": "feliz-cumpleanos", "label": "Feliz Cumpleaños", "available": false },
+      { "id": "te-amo", "label": "Te Amo", "available": false },
+      { "id": "graduacion", "label": "Graduación", "available": false }
+    ]
+  }
+]

@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muy pronto | Aura Fev</title>
-  <meta name="description" content="Esta sección de Aura Fev está en camino.">
+  <title>Catálogo | Aura Fev</title>
+  <meta name="description" content="Cinco líneas de regalo Aura Fev: Esencial, Signature, Clásica, Premium y Luxury. Detalles personalizados para cada ocasión.">
   <meta name="theme-color" content="#FAF6F1">
-  <meta name="robots" content="noindex, follow">
 
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
@@ -18,7 +17,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="/css/main.css">
@@ -65,25 +64,14 @@
 </header>
 
 <main id="main">
-  <section class="empty-state">
-    <div class="aura-glow" aria-hidden="true"></div>
-    <svg class="aura-rings" viewBox="0 0 600 600" aria-hidden="true">
-      <g fill="none" stroke="#B88A44">
-        <circle cx="300" cy="300" r="80" stroke-width="1" opacity=".5"/>
-        <circle cx="300" cy="300" r="130" stroke-width="1" opacity=".38"/>
-        <circle cx="300" cy="300" r="180" stroke-width="1" opacity=".28" stroke-dasharray="2 7"/>
-        <circle cx="300" cy="300" r="230" stroke-width="1" opacity=".2"/>
-        <circle cx="300" cy="300" r="280" stroke-width="1" opacity=".13" stroke-dasharray="1 9"/>
-      </g>
-    </svg>
-    <div class="empty-state-inner reveal">
-      <p class="eyebrow eyebrow--center">Aura Fev</p>
-      <h1>Esta sección está en camino.</h1>
-      <p class="sub">Estamos terminando de pulir esta parte de la tienda. Mientras tanto, puedes seguir explorando la colección o escribirnos directo.</p>
-      <div class="empty-state-actions">
-        <a href="/" class="btn btn-primary">Volver al inicio</a>
-        <a href="#" class="btn btn-ghost" data-whatsapp-link target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+  <section class="section catalog-hero">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Aura Fev</p>
+        <h1 id="catalogTitle">Nuestro catálogo</h1>
+        <p class="sub">Cinco líneas, cada una con sus propias variantes. Elige la que se ajuste al momento — todas incluyen empaque Aura Fev y tarjeta de dedicatoria.</p>
       </div>
+      <div class="prod-grid reveal-stagger" id="catalogGrid" aria-live="polite"></div>
     </div>
   </section>
 </main>
@@ -142,7 +130,7 @@
 </footer>
 
 <script src="/js/config/config.js"></script>
-<script type="module" src="/js/pages/proximamente.js"></script>
+<script type="module" src="/js/pages/catalogo.js"></script>
 
 <div id="chatWidgetRoot"></div>
 

@@ -18,6 +18,20 @@ import { initChatWidget } from '../components/chatWidget.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
+import { getItemCount } from '../services/cart/cartService.js';
+
+/**
+ * Keeps the header cart bubble (.cart-count[data-count]) in sync with
+ * cartService — updates on load and on every `cart:updated` event, so
+ * product pages don't each need to reimplement this.
+ */
+function initCartBadge() {
+  const badge = qs('.cart-count');
+  if (!badge) return;
+  const sync = () => badge.setAttribute('data-count', String(getItemCount()));
+  sync();
+  window.addEventListener('cart:updated', sync);
+}
 
 export async function initSiteChrome() {
   initNav();
@@ -26,6 +40,7 @@ export async function initSiteChrome() {
   trackPageView();
   wireWhatsappLinks();
   initChatWidget();
+  initCartBadge();
 
   await Promise.all([
     renderFooterNav({
