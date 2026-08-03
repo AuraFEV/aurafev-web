@@ -81,3 +81,26 @@ ${paymentText}
 export function getKnowledgeText() {
   return buildKnowledgeText();
 }
+
+/**
+ * Turns the raw { path, linea, variant } snapshot the frontend sends
+ * with every message into a short, human-readable line for Laura —
+ * looked up against the real product data, so a bogus/unknown slug or
+ * variant id from the client just resolves to nothing instead of
+ * crashing or being trusted blindly.
+ */
+export function buildPageContextText(pageContext) {
+  if (!pageContext || typeof pageContext !== 'object') return '';
+  const { path, linea, variant } = pageContext;
+
+  if (!linea) {
+    return path === '/catalogo.html' ? 'La persona está viendo el catálogo completo ahora mismo.' : '';
+  }
+
+  const products = loadJSON('products.json');
+  const product = products.find((p) => p.slug === linea);
+  if (!product) return '';
+
+  const variantObj = product.variants.find((v) => v.id === variant);
+  return `La persona está viendo ahora mismo la ficha de "${product.line}" (S/${variantObj?.priceOverride ?? product.price})${variantObj ? `, con la variante "${variantObj.label}" ya seleccionada` : ''}. Si te pregunta por "este producto" o "esta variante" sin más detalle, se refiere a esto — no le pidas que lo repita.`;
+}

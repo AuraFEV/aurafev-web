@@ -11,10 +11,36 @@
  */
 import { qs, createElement, on } from '../utils/dom.js';
 import { icon } from '../utils/icons.js';
-import { isChatConfigured, sendChatMessage } from '../services/chat/chatService.js';
+import { isChatConfigured, sendChatMessage, getPageContext } from '../services/chat/chatService.js';
 import { getSupportLink } from '../services/whatsapp/whatsappService.js';
 
 const GREETING = '¡Hola! Soy Laura, la asesora virtual de Aura Fev 💛 ¿Para qué ocasión estás pensando regalar algo?';
+
+/**
+ * Laura's replies come back as plain text from Claude, but she
+ * naturally writes **bold** and drops page links like
+ * /producto.html?linea=signature. The chat bubble used to render both
+ * as literal characters (textContent). This escapes the text first
+ * (so nothing from the model can inject arbitrary markup), then
+ * enables exactly two safe patterns: **bold** and links to this
+ * site's own product/catalog pages.
+ */
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatLauraMessage(text) {
+  let safe = escapeHtml(text);
+  safe = safe.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  safe = safe.replace(/(https?:\/\/[^\s]+)/g, (url) => `<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
+  safe = safe.replace(/(^|[\s(])(\/(?:producto|catalogo)\.html[^\s)]*)/g, (_m, pre, path) => `${pre}<a href="${path}">${path}</a>`);
+  return safe;
+}
 
 export function initChatWidget() {
   const root = qs('#chatWidgetRoot');
@@ -82,7 +108,11 @@ export function initChatWidget() {
 
   function addBubble(role, text) {
     const bubble = createElement('div', { class: `chat-bubble from-${role === 'user' ? 'user' : 'laura'}` });
-    bubble.textContent = text;
+    if (role === 'user') {
+      bubble.textContent = text;
+    } else {
+      bubble.innerHTML = formatLauraMessage(text);
+    }
     messagesEl.appendChild(bubble);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     return bubble;
@@ -149,7 +179,7 @@ export function initChatWidget() {
     sendBtn.disabled = true;
 
     try {
-      const reply = await sendChatMessage(history);
+      const reply = await sendChatMessage(history, getPageContext());
       typingBubble.remove();
       addBubble('assistant', reply);
       history.push({ role: 'assistant', content: reply });

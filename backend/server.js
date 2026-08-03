@@ -17,6 +17,7 @@ import express from 'express';
 import cors from 'cors';
 import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt } from './systemPrompt.js';
+import { buildPageContextText } from './knowledge.js';
 
 const PORT = process.env.PORT || 3001;
 // ALLOWED_ORIGIN accepts a comma-separated list, because the site is
@@ -78,7 +79,7 @@ app.post('/api/chat', async (req, res) => {
     return res.status(429).json({ error: 'Estoy conversando con muchas personas a la vez justo ahora 💛 Intenta de nuevo en un momento, o escríbenos por WhatsApp.' });
   }
 
-  const { messages } = req.body || {};
+  const { messages, pageContext } = req.body || {};
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'Falta el historial de conversación (messages).' });
   }
@@ -88,11 +89,16 @@ app.post('/api/chat', async (req, res) => {
     content: String(m.content || '').slice(0, 4000)
   }));
 
+  const pageContextText = buildPageContextText(pageContext);
+  const systemForThisRequest = pageContextText
+    ? `${systemPrompt}\n\nCONTEXTO DE LA PÁGINA ACTUAL:\n${pageContextText}`
+    : systemPrompt;
+
   try {
     const response = await anthropic.messages.create({
       model: MODEL_ID,
       max_tokens: MAX_OUTPUT_TOKENS,
-      system: systemPrompt,
+      system: systemForThisRequest,
       messages: trimmedHistory
     });
 
