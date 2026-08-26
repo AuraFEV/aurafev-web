@@ -15,7 +15,7 @@
     "id": "graduacion",
     "label": "Graduación",
     "icon": "graduation",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=graduacion"
   },
   {
     "id": "mama",
@@ -31,9 +31,9 @@
   },
   {
     "id": "baby-shower",
-    "label": "Baby Shower",
+    "label": "Bienvenida",
     "icon": "baby",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=baby-shower"
   },
   {
     "id": "aniversario",

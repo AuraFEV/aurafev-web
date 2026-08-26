@@ -56,7 +56,7 @@ function buildKnowledgeText() {
   }).join('\n');
 
   return `
-CATÁLOGO PUBLICADO (5 líneas, cada una con variantes — SÍ puedes hablar de precios y composición con confianza, es la información real del sitio):
+CATÁLOGO PUBLICADO (SÍ puedes hablar de precios y composición con confianza, es la información real del sitio):
 ${productsText}
 
 Cada línea tiene su propia página con selector de variante y botón "Agregar al carrito" (el carrito funciona y se guarda en el navegador de la persona). El pago todavía se coordina de forma manual por WhatsApp / Yape / Plin — no hay checkout automático con tarjeta todavía, así que para cerrar una compra siempre conviene invitar a WhatsApp.

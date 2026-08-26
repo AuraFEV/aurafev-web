@@ -68,7 +68,7 @@ export function initCatalogFilterTitle() {
   const params = new URLSearchParams(window.location.search);
   const occasion = params.get('ocasion');
   const titleEl = qs('#catalogTitle');
-  const labels = { cumpleanos: 'Cumpleaños', aniversario: 'Aniversario' };
+  const labels = { cumpleanos: 'Cumpleaños', aniversario: 'Aniversario', graduacion: 'Graduación', 'baby-shower': 'Bienvenida' };
   if (occasion && titleEl && labels[occasion]) {
     titleEl.textContent = `Catálogo — ${labels[occasion]}`;
   }
