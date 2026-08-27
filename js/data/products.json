@@ -5,7 +5,7 @@
     "badge": "Edición Insignia",
     "price": 199,
     "compareAt": null,
-    "occasion": ["aniversario", "cumpleanos"],
+    "occasion": ["aniversario", "cumpleanos", "papa"],
     "tagline": "Nuestra experiencia más exclusiva.",
     "description": "Nuestra experiencia más exclusiva, con el licor que tú prefieras: Jack Daniel's o Johnnie Walker Black Label. Mismo peluche, mismo marco de fotos personalizado, mismo precio.",
     "includes": [
@@ -28,7 +28,7 @@
     "badge": null,
     "price": 79,
     "compareAt": null,
-    "occasion": ["aniversario"],
+    "occasion": ["aniversario", "pareja"],
     "tagline": "Brindis especial para dos.",
     "description": "Vino tinto, copas de cristal y marco de fotos — ideal para aniversarios y brindis en pareja.",
     "includes": [
@@ -50,7 +50,7 @@
     "badge": null,
     "price": 74,
     "compareAt": null,
-    "occasion": ["aniversario", "cumpleanos"],
+    "occasion": ["aniversario", "cumpleanos", "pareja"],
     "tagline": "Elige el color de tu oso.",
     "description": "Vino tinto, Ferrero Rocher y marco de fotos, con el peluche que tú elijas — crema, marrón o tostado. El mismo detalle especial, con la personalidad que tú prefieras.",
     "includes": [
@@ -98,7 +98,7 @@
     "badge": "Nuestro más vendido",
     "price": 59,
     "compareAt": null,
-    "occasion": ["cumpleanos"],
+    "occasion": ["cumpleanos", "papa"],
     "tagline": "Elige el color de tu oso.",
     "description": "Nuestra línea más pedida: Corona, Ferrero Rocher y globo metálico en caja redonda Aura Fev, con el peluche que tú elijas.",
     "includes": [

@@ -144,6 +144,29 @@
   .why-card { border-left: 1px solid var(--border); }
 }
 
+/* How-it-works steps ----------------------------------------------------- */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.step-card { position: relative; }
+
+.step-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.55;
+  margin-bottom: 12px;
+}
+
+.step-card h3 { font-size: 1.1rem; font-weight: 400; margin-bottom: 8px; }
+.step-card p { font-size: 0.88rem; color: var(--text-soft); font-weight: 300; }
+
 /* Packaging cards -------------------------------------------------- */
 .pack-grid {
   display: grid;

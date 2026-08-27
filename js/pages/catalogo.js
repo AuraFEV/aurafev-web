@@ -1,6 +1,6 @@
 /**
  * js/pages/catalogo.js
- * Entry point for /catalogo.html. Renders the 5-line product grid from
+ * Entry point for /catalogo.html. Renders the product grid from
  * js/data/products.json, optionally filtered by ?ocasion=.
  */
 import { qs } from '../utils/dom.js';

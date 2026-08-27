@@ -1,8 +1,8 @@
 /**
  * catalogo.css
- * The 5-line product grid (/catalogo.html) and the product card it's
- * built from — shared with the "you might also like" pattern if one
- * gets added to producto.html later.
+ * The product grid (/catalogo.html) and the product card it's built
+ * from — shared with the "you might also like" pattern if one gets
+ * added to producto.html later.
  */
 
 .catalog-hero .section-head { max-width: 640px; }
@@ -37,6 +37,12 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--bg-primary);
+}
+
+.prod-card-media-link, .prod-card-title-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .prod-card-media img {
@@ -122,6 +128,26 @@
 }
 
 .prod-card:hover .prod-link { color: var(--gold); }
+
+.prod-quickadd {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  color: var(--text-soft);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: color var(--duration-fast), border-color var(--duration-fast), background var(--duration-fast);
+}
+
+.prod-quickadd:hover { color: var(--gold); border-color: var(--gold); }
+
+.prod-quickadd[data-state="added"] {
+  color: var(--white);
+  background: var(--gold);
+  border-color: var(--gold);
+}
 
 .prod-empty {
   grid-column: 1 / -1;

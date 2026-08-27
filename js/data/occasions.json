@@ -3,7 +3,7 @@
     "id": "pareja",
     "label": "Para mi pareja",
     "icon": "heart",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=pareja"
   },
   {
     "id": "cumpleanos",
@@ -27,7 +27,7 @@
     "id": "papa",
     "label": "Para papá",
     "icon": "father",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=papa"
   },
   {
     "id": "baby-shower",
