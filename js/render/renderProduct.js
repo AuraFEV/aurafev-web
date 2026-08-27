@@ -25,7 +25,7 @@ function photoPendingBlock() {
   `;
 }
 
-export async function renderProduct(container, slug) {
+export async function renderProduct(container, slug, initialVariantId) {
   if (!container) return null;
 
   let products;
@@ -51,18 +51,20 @@ export async function renderProduct(container, slug) {
   }
 
   const hasMessages = Array.isArray(product.messageOptions) && product.messageOptions.length > 0;
+  const initialVariant = product.variants.find((v) => v.id === initialVariantId) || product.variants[0];
+  const initialPrice = initialVariant.priceOverride ?? product.price;
 
   container.innerHTML = `
     <div class="prod-detail reveal">
       <div class="prod-detail-media" id="prodMedia">
-        ${product.photoPending ? photoPendingBlock() : `<img id="prodImage" src="${product.variants[0].image || ''}" alt="${product.line} — Aura Fev">`}
+        ${product.photoPending ? photoPendingBlock() : `<img id="prodImage" src="${initialVariant.image || ''}" alt="${product.line} — Aura Fev">`}
         ${product.badge ? `<span class="prod-badge">${product.badge}</span>` : ''}
       </div>
 
       <div class="prod-detail-info">
         <p class="eyebrow">${product.line}</p>
         <h1>${product.tagline}</h1>
-        <p class="prod-price-lg" id="prodPrice">${formatPEN(product.price)}</p>
+        <p class="prod-price-lg" id="prodPrice">${formatPEN(initialPrice)}</p>
         <p class="prod-description">${product.description}</p>
 
         <ul class="prod-includes">
@@ -72,14 +74,14 @@ export async function renderProduct(container, slug) {
         <div class="prod-variant-picker" role="radiogroup" aria-label="Elige tu variante">
           <p class="prod-picker-label">Elige tu variante</p>
           <div class="prod-variant-options" id="variantOptions">
-            ${product.variants.map((v, i) => `
+            ${product.variants.map((v) => `
               <label class="prod-variant-chip">
-                <input type="radio" name="variant" value="${v.id}" ${i === 0 ? 'checked' : ''}>
+                <input type="radio" name="variant" value="${v.id}" ${v.id === initialVariant.id ? 'checked' : ''}>
                 <span>${v.label}</span>
               </label>
             `).join('')}
           </div>
-          ${product.variants.some((v) => v.note) ? `<p class="prod-variant-note" id="variantNote">${product.variants[0].note || ''}</p>` : ''}
+          ${product.variants.some((v) => v.note) ? `<p class="prod-variant-note" id="variantNote">${initialVariant.note || ''}</p>` : ''}
         </div>
 
         ${hasMessages ? `

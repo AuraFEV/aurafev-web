@@ -157,9 +157,9 @@
     "photoPending": false,
     "variants": [
       { "id": "unica", "label": "Edición única", "image": "/images/products/cumpleanos-unica.jpg" },
-      { "id": "alianza-lima", "label": "Edición Hincha — Alianza Lima", "image": "/images/products/cumpleanos-alianza-lima.jpg", "priceOverride": 69 },
-      { "id": "universitario", "label": "Edición Hincha — Universitario", "image": "/images/products/cumpleanos-universitario.jpg", "priceOverride": 69 },
-      { "id": "sporting-cristal", "label": "Edición Hincha — Sporting Cristal", "image": "/images/products/cumpleanos-sporting-cristal.jpg", "priceOverride": 69 }
+      { "id": "alianza-lima", "label": "Edición Hincha — Alianza Lima", "image": "/images/products/cumpleanos-alianza-lima.jpg", "priceOverride": 69, "note": "Peluche con la camiseta de Alianza Lima, Corona, Ferrero Rocher y globo con el escudo del club." },
+      { "id": "universitario", "label": "Edición Hincha — Universitario", "image": "/images/products/cumpleanos-universitario.jpg", "priceOverride": 69, "note": "Peluche con la camiseta de Universitario, Corona, Ferrero Rocher y globo con el escudo del club." },
+      { "id": "sporting-cristal", "label": "Edición Hincha — Sporting Cristal", "image": "/images/products/cumpleanos-sporting-cristal.jpg", "priceOverride": 69, "note": "Peluche con la camiseta de Sporting Cristal, Corona, Ferrero Rocher y globo con el escudo del club." }
     ]
   },
   {

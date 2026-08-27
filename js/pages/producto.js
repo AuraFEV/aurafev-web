@@ -14,7 +14,8 @@ async function init() {
 
   const params = new URLSearchParams(window.location.search);
   const slug = params.get('linea');
-  const product = await renderProduct(qs('#productDetail'), slug);
+  const variante = params.get('variante');
+  const product = await renderProduct(qs('#productDetail'), slug, variante);
 
   if (product) {
     document.title = `${product.line} | Aura Fev`;

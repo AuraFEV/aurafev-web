@@ -1,25 +1,43 @@
 /**
  * js/render/renderCatalog.js
- * Populates the catalog grid from js/data/products.json, each card
- * linking to its own detail page (producto.html?linea=...) and also
- * offering a direct "Agregar" quick-add button (adds the product's
- * first variant straight to the cart, no detour through the detail
- * page — wired via cartService so the header badge updates itself).
- * Supports an optional `occasion` filter (matched against the `occasion`
- * array in each product) so /catalogo.html?ocasion=cumpleanos can be
- * linked directly from js/data/occasions.json once a category has real
- * products behind it.
+ * Populates the catalog grid from js/data/products.json.
+ * One card per product by default — but when a product has a variant
+ * priced differently from the base (priceOverride, e.g. Cumpleaños'
+ * "Edición Hincha" at S/69 vs the base S/54), that variant gets its own
+ * card too, so it's actually discoverable in the grid instead of hiding
+ * behind the detail page's variant picker. Same-priced variants (Luxury's
+ * 2 whiskies, the bear-color pickers) stay as a single card — those are
+ * a "pick on the detail page" choice, not a different purchase decision.
+ * Each card also offers a direct "Agregar" quick-add button (adds that
+ * exact variant straight to the cart via cartService).
  */
 import { fetchJSON, qs, qsa } from '../utils/dom.js';
 import { formatPEN } from '../utils/currency.js';
 import { addItem } from '../services/cart/cartService.js';
 
-function productCard(product) {
-  const firstVariant = product.variants[0];
-  const image = product.photoPending ? null : (firstVariant.image || null);
+/** Base card (product.variants[0]) + one extra card per differently-priced variant. */
+function cardEntriesFor(product) {
+  const base = product.variants[0];
+  const entries = [{ product, variant: base, isVariant: false }];
+  product.variants.slice(1).forEach((v) => {
+    if (v.priceOverride !== undefined && v.priceOverride !== product.price) {
+      entries.push({ product, variant: v, isVariant: true });
+    }
+  });
+  return entries;
+}
+
+function productCard({ product, variant, isVariant }) {
+  const image = product.photoPending ? null : (variant.image || null);
+  const price = variant.priceOverride ?? product.price;
+  const title = isVariant ? `${product.line} — ${variant.label}` : product.line;
+  const tagline = isVariant ? (variant.note || product.tagline) : product.tagline;
+  const href = isVariant
+    ? `/producto.html?linea=${product.slug}&variante=${variant.id}`
+    : `/producto.html?linea=${product.slug}`;
 
   const media = image
-    ? `<img src="${image}" alt="${product.line} — Aura Fev" loading="lazy">`
+    ? `<img src="${image}" alt="${title} — Aura Fev" loading="lazy">`
     : `
       <div class="prod-photo-pending" aria-hidden="true">
         <svg class="aura-rings-sm" viewBox="0 0 200 200">
@@ -35,36 +53,30 @@ function productCard(product) {
 
   return `
     <div class="prod-card">
-      <a href="/producto.html?linea=${product.slug}" class="prod-card-media-link">
+      <a href="${href}" class="prod-card-media-link">
         <div class="prod-card-media">
           ${media}
-          ${product.badge ? `<span class="prod-badge">${product.badge}</span>` : ''}
+          ${product.badge && !isVariant ? `<span class="prod-badge">${product.badge}</span>` : ''}
         </div>
       </a>
       <div class="prod-card-body">
-        <a href="/producto.html?linea=${product.slug}" class="prod-card-title-link"><h3>${product.line}</h3></a>
-        <p>${product.tagline}</p>
+        <a href="${href}" class="prod-card-title-link"><h3>${title}</h3></a>
+        <p>${tagline}</p>
         <div class="prod-card-foot">
-          <span class="prod-price">${formatPEN(product.price)}</span>
-          <button type="button" class="prod-quickadd" data-slug="${product.slug}">Agregar</button>
+          <span class="prod-price">${formatPEN(price)}</span>
+          <button type="button" class="prod-quickadd" data-slug="${product.slug}" data-variant="${variant.id}">Agregar</button>
         </div>
       </div>
     </div>
   `;
 }
 
-/**
- * Wires every "Agregar" button in the grid to add that product's first
- * variant straight to the cart — no navigation, no variant picker (for
- * a specific color/licor, people still go to the detail page). Takes
- * the already-fetched `products` array so it doesn't re-fetch per click.
- */
 function wireQuickAdd(container, products) {
   qsa('.prod-quickadd', container).forEach((btn) => {
     btn.addEventListener('click', () => {
       const product = products.find((p) => p.slug === btn.dataset.slug);
       if (!product) return;
-      const variant = product.variants[0];
+      const variant = product.variants.find((v) => v.id === btn.dataset.variant) || product.variants[0];
       addItem({
         id: `${product.slug}-${variant.id}`,
         name: `${product.line} — ${variant.label}`,
@@ -96,7 +108,8 @@ export async function renderCatalog(container, { occasion } = {}) {
       container.innerHTML = `<p class="prod-empty">Todavía no tenemos productos publicados para esta ocasión — escríbenos por WhatsApp y te ayudamos igual.</p>`;
       return;
     }
-    container.innerHTML = products.map(productCard).join('');
+    const entries = products.flatMap(cardEntriesFor);
+    container.innerHTML = entries.map(productCard).join('');
     wireQuickAdd(container, products);
   } catch (err) {
     console.error('[renderCatalog]', err);
@@ -113,7 +126,8 @@ export function initCatalogFilterTitle() {
     graduacion: 'Graduación',
     'baby-shower': 'Bienvenida',
     pareja: 'Para mi Pareja',
-    papa: 'Para Papá'
+    papa: 'Para Papá',
+    corporativo: 'Corporativo'
   };
   if (occasion && titleEl && labels[occasion]) {
     titleEl.textContent = `Catálogo — ${labels[occasion]}`;
