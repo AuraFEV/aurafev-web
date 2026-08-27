@@ -56,22 +56,18 @@
 /* Collection cards ---------------------------------------------------- */
 .coll-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
-}
-
-@media (max-width: 820px) {
-  .coll-grid { grid-template-columns: 1fr; }
 }
 
 .coll-card {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  min-height: 460px;
+  min-height: 320px;
   display: flex;
   align-items: flex-end;
-  padding: 44px;
+  padding: 34px;
   isolation: isolate;
 }
 
@@ -92,6 +88,42 @@
   background:
     radial-gradient(120% 90% at 80% 0%, rgba(255, 255, 255, 0.45), transparent 55%),
     linear-gradient(160deg, #F5EFE8 0%, #C9A46A 70%, #8A6846 130%);
+}
+
+.coll-card--c::before {
+  background:
+    radial-gradient(120% 90% at 15% 85%, rgba(255, 255, 255, 0.4), transparent 55%),
+    linear-gradient(200deg, #E9DAC2 0%, #C08F52 60%, #7A5A38 120%);
+}
+
+.coll-card--d::before {
+  background:
+    radial-gradient(120% 90% at 85% 90%, rgba(255, 255, 255, 0.42), transparent 55%),
+    linear-gradient(210deg, #F0E5D6 0%, #BE9662 55%, #8F6A42 110%);
+}
+
+.coll-card--e::before {
+  background:
+    radial-gradient(120% 90% at 25% 15%, rgba(255, 255, 255, 0.48), transparent 55%),
+    linear-gradient(140deg, #F3E6D1 0%, #D2A468 55%, #A17640 105%);
+}
+
+.coll-card--f::before {
+  background:
+    radial-gradient(120% 90% at 75% 10%, rgba(255, 255, 255, 0.45), transparent 55%),
+    linear-gradient(170deg, #ECE0C9 0%, #C39A5F 60%, #785838 115%);
+}
+
+.coll-card--g::before {
+  background:
+    radial-gradient(120% 90% at 20% 90%, rgba(255, 255, 255, 0.4), transparent 55%),
+    linear-gradient(190deg, #F5EBDA 0%, #D4AC72 60%, #93683F 115%);
+}
+
+.coll-card--h::before {
+  background:
+    radial-gradient(120% 90% at 80% 85%, rgba(255, 255, 255, 0.38), transparent 55%),
+    linear-gradient(220deg, #E6D6BB 0%, #B98950 60%, #6E4F30 115%);
 }
 
 .coll-content { color: #fff; }

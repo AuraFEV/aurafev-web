@@ -144,8 +144,8 @@
     "price": 54,
     "compareAt": null,
     "occasion": ["cumpleanos"],
-    "tagline": "Para empezar el año con dulzura.",
-    "description": "Peluche, taza de cerámica, Ferrero Rocher y globo personalizado \"Feliz Cumpleaños\" en caja Aura Fev.",
+    "tagline": "Para empezar el año con dulzura — también en edición hincha.",
+    "description": "Peluche, taza de cerámica, Ferrero Rocher y globo personalizado \"Feliz Cumpleaños\" en caja Aura Fev. También disponible en edición hincha, con la camiseta de tu equipo favorito.",
     "includes": [
       "Peluche",
       "Taza de cerámica",
@@ -156,7 +156,10 @@
     ],
     "photoPending": false,
     "variants": [
-      { "id": "unica", "label": "Edición única", "image": "/images/products/cumpleanos-unica.jpg" }
+      { "id": "unica", "label": "Edición única", "image": "/images/products/cumpleanos-unica.jpg" },
+      { "id": "alianza-lima", "label": "Edición Hincha — Alianza Lima", "image": "/images/products/cumpleanos-alianza-lima.jpg", "priceOverride": 69 },
+      { "id": "universitario", "label": "Edición Hincha — Universitario", "image": "/images/products/cumpleanos-universitario.jpg", "priceOverride": 69 },
+      { "id": "sporting-cristal", "label": "Edición Hincha — Sporting Cristal", "image": "/images/products/cumpleanos-sporting-cristal.jpg", "priceOverride": 69 }
     ]
   },
   {
@@ -167,18 +170,43 @@
     "compareAt": null,
     "occasion": ["graduacion"],
     "tagline": "Para celebrar cada logro.",
-    "description": "Peluche con birrete, mini espumante y globo metálico \"Felicidades Graduado\" en caja Aura Fev — para celebrar cada logro.",
+    "description": "Peluche con birrete o con toga completa, Ferrero Rocher, espumante y globo metálico en caja Aura Fev — para celebrar cada logro.",
     "includes": [
-      "Peluche con birrete",
-      "Mini espumante",
+      "Peluche (birrete o toga)",
+      "Espumante",
       "Ferrero Rocher",
-      "Globo metálico \"Felicidades Graduado\"",
-      "Caja redonda Aura Fev",
+      "Globo metálico",
+      "Caja Aura Fev",
       "Tarjeta de dedicatoria"
     ],
     "photoPending": false,
     "variants": [
-      { "id": "unica", "label": "Edición única", "image": "/images/products/graduacion-unica.jpg" }
+      { "id": "birrete", "label": "Birrete", "image": "/images/products/graduacion-unica.jpg" },
+      { "id": "toga", "label": "Toga Completa", "image": "/images/products/graduacion-toga.jpg" }
+    ]
+  },
+  {
+    "slug": "profesiones",
+    "line": "Profesiones",
+    "badge": null,
+    "price": 74,
+    "compareAt": null,
+    "occasion": ["graduacion", "corporativo"],
+    "tagline": "Para celebrar su vocación.",
+    "description": "Peluche disfrazado de tu profesión, vino tinto, Ferrero Rocher y globo metálico en caja Aura Fev — un detalle con la vocación de quien lo recibe.",
+    "includes": [
+      "Peluche disfrazado (policía, enfermero o administrador)",
+      "Vino tinto",
+      "Ferrero Rocher",
+      "Globo metálico",
+      "Caja de madera Aura Fev",
+      "Tarjeta de dedicatoria"
+    ],
+    "photoPending": false,
+    "variants": [
+      { "id": "policia", "label": "Policía", "image": "/images/products/profesiones-policia.jpg" },
+      { "id": "enfermero", "label": "Enfermero", "image": "/images/products/profesiones-enfermero.jpg" },
+      { "id": "administrador", "label": "Administrador", "image": "/images/products/profesiones-administrador.jpg" }
     ]
   }
 ]
