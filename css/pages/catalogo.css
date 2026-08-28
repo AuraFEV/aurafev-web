@@ -105,7 +105,18 @@
   font-size: 0.88rem;
   color: var(--text-soft);
   font-weight: 300;
+}
+
+.prod-card-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold) !important;
+  flex: 0 0 auto;
+}
+
+.prod-card-desc {
   flex: 1;
+  font-size: 0.82rem !important;
 }
 
 .prod-card-foot {

@@ -31,7 +31,7 @@ function productCard({ product, variant, isVariant }) {
   const image = product.photoPending ? null : (variant.image || null);
   const price = variant.priceOverride ?? product.price;
   const title = isVariant ? `${product.line} — ${variant.label}` : product.line;
-  const tagline = isVariant ? (variant.note || product.tagline) : product.tagline;
+  const description = isVariant ? (variant.note || product.description) : product.description;
   const href = isVariant
     ? `/producto.html?linea=${product.slug}&variante=${variant.id}`
     : `/producto.html?linea=${product.slug}`;
@@ -61,7 +61,8 @@ function productCard({ product, variant, isVariant }) {
       </a>
       <div class="prod-card-body">
         <a href="${href}" class="prod-card-title-link"><h3>${title}</h3></a>
-        <p>${tagline}</p>
+        <p class="prod-card-tagline">${product.tagline}</p>
+        <p class="prod-card-desc">${description}</p>
         <div class="prod-card-foot">
           <span class="prod-price">${formatPEN(price)}</span>
           <button type="button" class="prod-quickadd" data-slug="${product.slug}" data-variant="${variant.id}">Agregar</button>
