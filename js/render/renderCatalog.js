@@ -114,6 +114,7 @@ export async function renderCatalog(container, { occasion } = {}) {
     wireQuickAdd(container, products);
   } catch (err) {
     console.error('[renderCatalog]', err);
+    container.innerHTML = `<p class="prod-empty">No pudimos cargar el catálogo justo ahora. Actualiza la página o escríbenos por WhatsApp y te ayudamos directo.</p>`;
   }
 }
 

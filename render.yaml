@@ -75,6 +75,9 @@ services:
       - path: /js/*
         name: Cache-Control
         value: public, max-age=3600
+      - path: /js/data/*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
       - path: /js/config/config.js
         name: Cache-Control
         value: public, max-age=0, must-revalidate

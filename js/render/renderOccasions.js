@@ -20,5 +20,6 @@ export async function renderOccasions(container) {
     `).join('');
   } catch (err) {
     console.error('[renderOccasions]', err);
+    container.innerHTML = `<p class="prod-empty">No pudimos cargar las ocasiones justo ahora. Actualiza la página o escríbenos por WhatsApp.</p>`;
   }
 }
