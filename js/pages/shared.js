@@ -15,6 +15,7 @@ import { initNav } from '../components/nav.js';
 import { initNewsletterForm } from '../components/newsletterForm.js';
 import { wireWhatsappLinks } from '../components/whatsappLinks.js';
 import { initChatWidget } from '../components/chatWidget.js';
+import { initSocialRail } from '../components/socialRail.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
@@ -34,6 +35,7 @@ function initCartBadge() {
 }
 
 export async function initSiteChrome() {
+  initSocialRail();
   initNav();
   initNewsletterForm();
   initAnalytics();
