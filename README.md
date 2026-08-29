@@ -253,7 +253,7 @@ por el arte de marca real antes de lanzar.
 
 ## WhatsApp Business API
 
-El número de contacto (**+51 938 700 925**) se configura vía la variable
+El número de contacto (**+51 938 263 651**) se configura vía la variable
 `WHATSAPP_NUMBER` — nunca está escrito en el código. Con solo esa
 variable, `js/services/whatsapp/whatsappService.js` ya genera enlaces
 `wa.me` funcionales (botón de WhatsApp en el footer) sin backend.
