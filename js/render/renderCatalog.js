@@ -15,6 +15,15 @@ import { fetchJSON, qs, qsa } from '../utils/dom.js';
 import { formatPEN } from '../utils/currency.js';
 import { addItem } from '../services/cart/cartService.js';
 
+/** Strips accents/diacritics so "graduacion" matches "Graduación" and
+ *  "cumpleanos" matches "Cumpleaños" — people search without tildes
+ *  constantly, especially on mobile keyboards. */
+function normalize(str) {
+  return str
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/ñ/g, 'n');
+}
+
 /** Base card (product.variants[0]) + one extra card per differently-priced variant. */
 function cardEntriesFor(product) {
   const base = product.variants[0];
@@ -98,15 +107,31 @@ function wireQuickAdd(container, products) {
   });
 }
 
-export async function renderCatalog(container, { occasion } = {}) {
+export async function renderCatalog(container, { occasion, query } = {}) {
   if (!container) return;
   try {
     let products = await fetchJSON('/js/data/products.json');
     if (occasion) {
       products = products.filter((p) => p.occasion.includes(occasion));
     }
+    if (query) {
+      const q = normalize(query.trim().toLowerCase());
+      products = products.filter((p) => {
+        const haystack = normalize([
+          p.line,
+          p.tagline,
+          p.description,
+          ...(p.keywords || []),
+          ...p.variants.map((v) => v.label)
+        ].join(' ').toLowerCase());
+        return haystack.includes(q);
+      });
+    }
     if (!products.length) {
-      container.innerHTML = `<p class="prod-empty">Todavía no tenemos productos publicados para esta ocasión — escríbenos por WhatsApp y te ayudamos igual.</p>`;
+      const message = query
+        ? `No encontramos nada para "${query}" — prueba con otra palabra, o escríbenos por WhatsApp y te ayudamos a encontrarlo.`
+        : `Todavía no tenemos productos publicados para esta ocasión — escríbenos por WhatsApp y te ayudamos igual.`;
+      container.innerHTML = `<p class="prod-empty">${message}</p>`;
       return;
     }
     const entries = products.flatMap(cardEntriesFor);
@@ -121,6 +146,7 @@ export async function renderCatalog(container, { occasion } = {}) {
 export function initCatalogFilterTitle() {
   const params = new URLSearchParams(window.location.search);
   const occasion = params.get('ocasion');
+  const query = params.get('buscar');
   const titleEl = qs('#catalogTitle');
   const labels = {
     cumpleanos: 'Cumpleaños',
@@ -131,8 +157,12 @@ export function initCatalogFilterTitle() {
     papa: 'Para Papá',
     corporativo: 'Corporativo'
   };
-  if (occasion && titleEl && labels[occasion]) {
-    titleEl.textContent = `Catálogo — ${labels[occasion]}`;
+  if (titleEl) {
+    if (query) {
+      titleEl.textContent = `Catálogo — Resultados para "${query}"`;
+    } else if (occasion && labels[occasion]) {
+      titleEl.textContent = `Catálogo — ${labels[occasion]}`;
+    }
   }
-  return occasion;
+  return { occasion, query };
 }

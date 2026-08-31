@@ -1,6 +1,7 @@
 [
   {
     "slug": "luxury",
+    "keywords": ["whisky", "whiskey", "jack daniels", "johnnie walker", "peluche", "oso"],
     "line": "Luxury",
     "badge": "Edición Insignia",
     "price": 199,
@@ -24,6 +25,7 @@
   },
   {
     "slug": "signature-vino-copas",
+    "keywords": ["vino", "peluche", "oso", "aniversario", "brindis"],
     "line": "Signature — Vino con Copas",
     "badge": null,
     "price": 79,
@@ -46,6 +48,7 @@
   },
   {
     "slug": "signature-vino",
+    "keywords": ["vino", "peluche", "oso", "osito"],
     "line": "Signature — Vino",
     "badge": null,
     "price": 74,
@@ -70,6 +73,7 @@
   },
   {
     "slug": "signature-sour",
+    "keywords": ["sour", "tabernero", "licor", "peluche", "oso", "osito"],
     "line": "Signature — Sour",
     "badge": null,
     "price": 79,
@@ -94,6 +98,7 @@
   },
   {
     "slug": "signature-corona",
+    "keywords": ["cerveza", "peluche", "oso", "osito"],
     "line": "Signature — Corona",
     "badge": "Nuestro más vendido",
     "price": 59,
@@ -118,6 +123,7 @@
   },
   {
     "slug": "bienvenida",
+    "keywords": ["bebe", "bebé", "recien nacido", "recién nacido", "nacimiento", "peluche", "oso", "osito", "huggies"],
     "line": "Bienvenida",
     "badge": null,
     "price": 49,
@@ -139,6 +145,7 @@
   },
   {
     "slug": "cumpleanos",
+    "keywords": ["peluche", "oso", "osito", "hincha", "alianza lima", "universitario", "sporting cristal", "futbol", "fútbol", "equipo"],
     "line": "Cumpleaños",
     "badge": null,
     "price": 54,
@@ -164,6 +171,7 @@
   },
   {
     "slug": "graduacion",
+    "keywords": ["peluche", "oso", "osito", "birrete", "toga", "espumante", "champagne", "riccadonna"],
     "line": "Graduación",
     "badge": null,
     "price": 69,
@@ -187,6 +195,7 @@
   },
   {
     "slug": "profesiones",
+    "keywords": ["peluche", "oso", "osito", "policia", "policía", "enfermero", "enfermera", "administrador", "trabajo", "graduación", "ascenso"],
     "line": "Profesiones",
     "badge": null,
     "price": 74,

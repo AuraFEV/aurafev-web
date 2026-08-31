@@ -73,6 +73,16 @@
   transition: transform var(--duration-fast), color var(--duration-fast);
 }
 
+button.icon-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .icon-btn:hover {
   color: var(--gold);
   transform: translateY(-1px);

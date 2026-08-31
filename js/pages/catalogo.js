@@ -10,8 +10,8 @@ import { renderCatalog, initCatalogFilterTitle } from '../render/renderCatalog.j
 
 async function init() {
   await initSiteChrome();
-  const occasion = initCatalogFilterTitle();
-  await renderCatalog(qs('#catalogGrid'), { occasion });
+  const { occasion, query } = initCatalogFilterTitle();
+  await renderCatalog(qs('#catalogGrid'), { occasion, query });
   initReveal();
 }
 
