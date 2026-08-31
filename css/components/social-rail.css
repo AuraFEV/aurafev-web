@@ -1,9 +1,10 @@
 /**
  * social-rail.css
  * Fixed vertical rail of social icons, always visible regardless of
- * scroll. Desktop/tablet only (>900px) — on narrower viewports it's
- * hidden and the footer icons are the fallback, since a fixed side
- * rail would eat into content width on a phone screen.
+ * scroll — on every viewport size. Desktop gets full-size icons with
+ * breathing room; mobile gets a compact version docked to the very
+ * edge so it doesn't eat into the ~20px side padding content already
+ * uses (see --pad in variables.css).
  */
 .social-rail {
   position: fixed;
@@ -49,5 +50,28 @@
 }
 
 @media (max-width: 900px) {
+  .social-rail {
+    left: 6px;
+    gap: 10px;
+  }
+
+  .social-rail a {
+    width: 28px;
+    height: 28px;
+    background: rgba(250, 246, 241, 0.9);
+  }
+
+  .social-rail a svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .social-rail-line {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
   .social-rail { display: none; }
 }
+
