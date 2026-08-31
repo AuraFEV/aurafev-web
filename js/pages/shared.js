@@ -17,6 +17,7 @@ import { wireWhatsappLinks } from '../components/whatsappLinks.js';
 import { initChatWidget } from '../components/chatWidget.js';
 import { initSocialRail } from '../components/socialRail.js';
 import { initSearch } from '../components/search.js';
+import { initCartDrawer } from '../components/cartDrawer.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
@@ -45,6 +46,7 @@ export async function initSiteChrome() {
   wireWhatsappLinks();
   initChatWidget();
   initCartBadge();
+  initCartDrawer();
 
   await Promise.all([
     renderFooterNav({
