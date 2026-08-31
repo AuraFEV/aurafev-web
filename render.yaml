@@ -43,9 +43,9 @@ services:
       - key: PLIN_MERCHANT_CODE
         sync: false
       - key: ENABLE_PAYMENT_VISA
-        value: "true"
+        value: "false"
       - key: ENABLE_PAYMENT_MASTERCARD
-        value: "true"
+        value: "false"
       - key: ENABLE_PAYMENT_YAPE
         value: "true"
       - key: ENABLE_PAYMENT_PLIN
@@ -53,7 +53,7 @@ services:
       - key: ENABLE_PAYMENT_PAYPAL
         value: "false"
       - key: ENABLE_PAYMENT_IZIPAY
-        value: "true"
+        value: "false"
       - key: ENABLE_PAYMENT_NIUBIZ
         value: "false"
       - key: GA_MEASUREMENT_ID

@@ -1,8 +1,14 @@
 /**
  * js/render/renderPaymentBadges.js
- * Renders the accepted-payment badge row shown in the footer (and,
- * later, at checkout) in the exact brand-mandated order: Visa,
- * Mastercard, Yape, Plin, PayPal, Izipay, Niubiz.
+ * Renders the accepted-payment badge row shown in the footer — only
+ * the payment methods actually available today (Yape, Plin,
+ * transferencia bancaria; all coordinated manually via WhatsApp, no
+ * live gateway yet). Do NOT add Visa/Mastercard/PayPal/Izipay/Niubiz
+ * back here until a real integration exists — see
+ * js/services/payment/providers/, where every provider currently
+ * throws PaymentProviderNotImplementedError. Showing a badge for a
+ * method nobody can actually use is a false trust signal, not a
+ * cosmetic detail.
  *
  * These are placeholder text badges, not the providers' official logo
  * artwork — see assets/icons/payments/README.md before launch.
