@@ -227,5 +227,77 @@
       { "id": "enfermero", "label": "Enfermero", "image": "/images/products/profesiones-enfermero.jpg" },
       { "id": "administrador", "label": "Administrador", "image": "/images/products/profesiones-administrador.jpg" }
     ]
+  },
+  {
+    "slug": "aura-morning-mini",
+    "line": "Aura Morning Mini",
+    "badge": null,
+    "price": 54,
+    "compareAt": null,
+    "occasion": ["pareja", "corporativo"],
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Aura Morning Mini, al precio de {price}.",
+    "tagline": "Para empezar el día con cariño.",
+    "description": "Taza, café Altomayo Gourmet, croissant, jugo y ensalada de frutas en caja Aura Fev.",
+    "includes": [
+      "Taza Aura Fev",
+      "Café Altomayo Gourmet",
+      "Croissant clásico",
+      "Jugo",
+      "Ensalada de frutas",
+      "Tarjeta de dedicatoria"
+    ],
+    "photoPending": false,
+    "variants": [
+      { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-mini.jpg" }
+    ]
+  },
+  {
+    "slug": "aura-morning-classic",
+    "line": "Aura Morning Classic",
+    "badge": "Nuestro desayuno más pedido",
+    "price": 74,
+    "compareAt": null,
+    "occasion": ["pareja", "corporativo"],
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Aura Morning Classic, al precio de {price}.",
+    "tagline": "Para un desayuno que se siente completo.",
+    "description": "Taza, café Altomayo Gourmet, pan con pollo, jugo, ensalada de frutas y alfajor en caja Aura Fev.",
+    "includes": [
+      "Taza Aura Fev",
+      "Café Altomayo Gourmet",
+      "Pan con pollo",
+      "Jugo",
+      "Ensalada de frutas",
+      "Alfajor",
+      "Tarjeta de dedicatoria"
+    ],
+    "photoPending": false,
+    "variants": [
+      { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-classic.jpg" }
+    ]
+  },
+  {
+    "slug": "aura-morning-signature",
+    "line": "Aura Morning Signature",
+    "badge": "Edición premium",
+    "price": 94,
+    "compareAt": null,
+    "occasion": ["pareja", "corporativo"],
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Aura Morning Signature, al precio de {price}.",
+    "tagline": "Para consentir de verdad, sin ocasión especial.",
+    "description": "Taza, café Altomayo Gourmet, pan con chicharrón, tamal, jugo, ensalada de frutas y alfajor en caja Aura Fev.",
+    "includes": [
+      "Taza Aura Fev",
+      "Café Altomayo Gourmet",
+      "Pan con chicharrón",
+      "Tamal",
+      "Jugo",
+      "Ensalada de frutas",
+      "Alfajor",
+      "Tarjeta de dedicatoria"
+    ],
+    "photoPending": false,
+    "variants": [
+      { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-signature.jpg" }
+    ]
   }
 ]

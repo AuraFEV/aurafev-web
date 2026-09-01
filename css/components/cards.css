@@ -126,6 +126,12 @@
     linear-gradient(220deg, #E6D6BB 0%, #B98950 60%, #6E4F30 115%);
 }
 
+.coll-card--i::before {
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgba(255, 255, 255, 0.46), transparent 55%),
+    linear-gradient(155deg, #F0E6D6 0%, #CDA671 55%, #85603A 110%);
+}
+
 .coll-content { color: #fff; }
 .coll-content .tag { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
 .coll-content h3 {
