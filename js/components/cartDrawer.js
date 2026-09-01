@@ -2,22 +2,38 @@
  * js/components/cartDrawer.js
  * Wires the header cart icon to an actual cart view: a slide-out panel
  * listing items from cartService (localStorage-backed — see that file),
- * with quantity controls and a "Continuar por WhatsApp" button that
- * builds a formatted order summary and opens it as a pre-filled wa.me
- * message. No real checkout/payment gateway exists yet (see
- * js/services/payment/) — WhatsApp handoff IS the checkout today, same
- * pattern as the rest of the site.
+ * with quantity controls, a required delivery district (so Ernesto can
+ * quote delivery AND get real traceability of where demand concentrates
+ * — tracked via analyticsService, not just buried in a WhatsApp chat),
+ * a payment method section (Yape/Plin QR or bank transfer, via
+ * paymentInfo.js), and a final WhatsApp handoff that builds a formatted
+ * order summary. No real checkout/payment gateway exists yet (see
+ * js/services/payment/) — WhatsApp confirmation IS the checkout today,
+ * same pattern as the rest of the site.
  */
-import { qs } from '../utils/dom.js';
+import { qs, fetchJSON } from '../utils/dom.js';
 import { getCart, setQuantity, removeItem, getSubtotal } from '../services/cart/cartService.js';
 import { getSupportLink } from '../services/whatsapp/whatsappService.js';
 import { formatPEN } from '../utils/currency.js';
+import { showPaymentInfo } from './paymentInfo.js';
+import { trackEvent } from '../services/analytics/analyticsService.js';
+
+let selectedDistrict = '';
+let districtsCache;
+
+async function getDistricts() {
+  if (!districtsCache) {
+    districtsCache = await fetchJSON('/js/data/districts.json');
+  }
+  return districtsCache;
+}
 
 function buildOrderMessage() {
   const items = getCart();
   const lines = items.map((i) => `- ${i.name} x${i.quantity} — ${formatPEN(i.price * i.quantity)}`);
   const subtotal = formatPEN(getSubtotal());
-  return `Hola! Quiero confirmar este pedido:\n\n${lines.join('\n')}\n\nSubtotal: ${subtotal}\n\n¿Cómo coordinamos el pago y la entrega?`;
+  const districtLine = selectedDistrict ? `\nDistrito de entrega: ${selectedDistrict}` : '';
+  return `Hola! Quiero confirmar este pedido:\n\n${lines.join('\n')}\n\nSubtotal: ${subtotal}${districtLine}\n\nAdjunto la captura o constancia de mi pago.`;
 }
 
 function itemRow(item) {
@@ -41,7 +57,34 @@ function itemRow(item) {
   `;
 }
 
-function renderContents(body, footer) {
+async function districtSelectHtml() {
+  const districts = await getDistricts();
+  const options = districts.map((d) => `<option value="${d}" ${d === selectedDistrict ? 'selected' : ''}>${d}</option>`).join('');
+  return `
+    <div class="cart-field">
+      <label for="cartDistrict">Distrito de entrega <span class="req">*</span></label>
+      <select id="cartDistrict">
+        <option value="" disabled ${selectedDistrict ? '' : 'selected'}>Elige tu distrito...</option>
+        ${options}
+      </select>
+    </div>
+  `;
+}
+
+function paymentSectionHtml() {
+  return `
+    <div class="cart-field">
+      <label>Método de pago</label>
+      <div class="cart-payment-pills">
+        <button type="button" class="pay-pill" data-provider="yape">YAPE</button>
+        <button type="button" class="pay-pill" data-provider="plin">PLIN</button>
+        <button type="button" class="pay-pill" data-provider="transferencia">TRANSFERENCIA</button>
+      </div>
+    </div>
+  `;
+}
+
+async function renderContents(body, footer) {
   const items = getCart();
   if (!items.length) {
     body.innerHTML = `
@@ -56,6 +99,20 @@ function renderContents(body, footer) {
   body.innerHTML = `<ul class="cart-item-list">${items.map(itemRow).join('')}</ul>`;
   footer.hidden = false;
   footer.querySelector('.cart-subtotal-amount').textContent = formatPEN(getSubtotal());
+  footer.querySelector('.cart-district-slot').innerHTML = await districtSelectHtml();
+  updateWhatsappState(footer);
+}
+
+function updateWhatsappState(footer) {
+  const btn = footer.querySelector('#cartWhatsappBtn');
+  const hint = footer.querySelector('.cart-district-hint');
+  if (!selectedDistrict) {
+    btn.setAttribute('aria-disabled', 'true');
+    hint.hidden = false;
+  } else {
+    btn.removeAttribute('aria-disabled');
+    hint.hidden = true;
+  }
 }
 
 export function initCartDrawer() {
@@ -81,7 +138,10 @@ export function initCartDrawer() {
         <span>Subtotal</span>
         <span class="cart-subtotal-amount"></span>
       </div>
-      <a href="#" class="btn btn-primary btn-block" id="cartWhatsappBtn" target="_blank" rel="noopener">Continuar por WhatsApp</a>
+      <div class="cart-district-slot"></div>
+      ${paymentSectionHtml()}
+      <a href="#" class="btn btn-primary btn-block" id="cartWhatsappBtn" target="_blank" rel="noopener">Confirmar pedido por WhatsApp</a>
+      <p class="cart-district-hint" hidden>Elige tu distrito de entrega para continuar.</p>
     </div>
   `;
 
@@ -139,13 +199,32 @@ export function initCartDrawer() {
     if (btn.dataset.action === 'remove') removeItem(id);
   });
 
+  footer.addEventListener('change', (e) => {
+    if (e.target.id !== 'cartDistrict') return;
+    selectedDistrict = e.target.value;
+    trackEvent('delivery_district_selected', { district: selectedDistrict });
+    updateWhatsappState(footer);
+  });
+
+  footer.addEventListener('click', (e) => {
+    const pill = e.target.closest('.pay-pill[data-provider]');
+    if (pill) showPaymentInfo(pill.dataset.provider);
+  });
+
   whatsappBtn.addEventListener('click', (e) => {
+    if (!selectedDistrict) {
+      e.preventDefault();
+      footer.querySelector('.cart-district-hint').hidden = false;
+      footer.querySelector('#cartDistrict').focus();
+      return;
+    }
     const link = getSupportLink(buildOrderMessage());
     if (!link) {
       e.preventDefault();
       return;
     }
     whatsappBtn.href = link;
+    trackEvent('begin_checkout_whatsapp', { district: selectedDistrict, value: getSubtotal() });
   });
 
   window.addEventListener('cart:updated', () => {

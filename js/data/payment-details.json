@@ -1,0 +1,17 @@
+{
+  "yape": {
+    "qrImage": "/images/payment/yape-qr.jpg",
+    "titular": "Mariaflavia Geraldine Garrido Cárdenas"
+  },
+  "plin": {
+    "qrImage": "/images/payment/plin-qr.jpg",
+    "titular": "Mariaflavia Geraldine Garrido Cárdenas"
+  },
+  "transferencia": {
+    "banco": "BCP",
+    "moneda": "Soles",
+    "cuenta": "19318236146048",
+    "cci": "00219311823614604813",
+    "titular": "Mariaflavia Geraldine Garrido Cárdenas"
+  }
+}

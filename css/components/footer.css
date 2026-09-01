@@ -62,6 +62,7 @@
 }
 
 .pay-pill {
+  font-family: inherit;
   font-size: 0.68rem;
   letter-spacing: 0.05em;
   font-weight: 500;
@@ -70,6 +71,13 @@
   padding: 7px 14px;
   border-radius: var(--radius-pill);
   background: var(--bg-primary);
+  cursor: pointer;
+  transition: color var(--duration-fast), border-color var(--duration-fast);
+}
+
+.pay-pill:hover {
+  color: var(--gold);
+  border-color: var(--gold);
 }
 
 .pay-secure {

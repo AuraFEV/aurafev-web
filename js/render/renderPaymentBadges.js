@@ -10,6 +10,10 @@
  * method nobody can actually use is a false trust signal, not a
  * cosmetic detail.
  *
+ * Each badge is a real button — clicking it opens the QR/account
+ * details via js/components/paymentInfo.js (wired separately in
+ * shared.js via wirePaymentBadges, once this markup exists in the DOM).
+ *
  * These are placeholder text badges, not the providers' official logo
  * artwork — see assets/icons/payments/README.md before launch.
  */
@@ -20,7 +24,7 @@ export async function renderPaymentBadges(container) {
   try {
     const methods = await fetchJSON('/js/data/payment-methods.json');
     container.innerHTML = methods
-      .map(({ id, label }) => `<span class="pay-pill" data-provider="${id}">${label.toUpperCase()}</span>`)
+      .map(({ id, label }) => `<button type="button" class="pay-pill" data-provider="${id}">${label.toUpperCase()}</button>`)
       .join('');
   } catch (err) {
     console.error('[renderPaymentBadges]', err);

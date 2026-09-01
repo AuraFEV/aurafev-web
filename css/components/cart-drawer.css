@@ -163,3 +163,50 @@
   font-size: 1.15rem;
   color: var(--gold);
 }
+
+.cart-field {
+  margin-bottom: 16px;
+}
+
+.cart-field label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.cart-field .req { color: var(--gold); }
+
+.cart-field select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.cart-payment-pills {
+  display: flex;
+  gap: 8px;
+}
+
+.cart-payment-pills .pay-pill {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-district-hint {
+  font-size: 0.76rem;
+  color: #B23A3A;
+  margin-top: 8px;
+  text-align: center;
+}
+
+#cartWhatsappBtn[aria-disabled="true"] {
+  opacity: 0.55;
+}
