@@ -9,6 +9,7 @@
 import { fetchJSON } from '../utils/dom.js';
 import { formatPEN } from '../utils/currency.js';
 import { addItem } from '../services/cart/cartService.js';
+import { getSupportLink } from '../services/whatsapp/whatsappService.js';
 
 function photoPendingBlock() {
   return `
@@ -97,7 +98,7 @@ export async function renderProduct(container, slug, initialVariantId) {
 
         <div class="prod-actions">
           <button class="btn btn-primary btn-block" id="addToCartBtn">Agregar al carrito</button>
-          <a href="#" class="btn btn-ghost btn-block" data-whatsapp-link target="_blank" rel="noopener">Consultar por WhatsApp</a>
+          <a href="#" class="btn btn-ghost btn-block" id="prodWhatsappBtn" target="_blank" rel="noopener">Consultar por WhatsApp</a>
         </div>
         <p class="form-message" id="addToCartMessage" aria-live="polite"></p>
       </div>
@@ -115,10 +116,21 @@ function wireInteractions(product) {
   const noteEl = document.getElementById('variantNote');
   const cartMsg = document.getElementById('addToCartMessage');
   const messageSelect = document.getElementById('messageSelect');
+  const whatsappBtn = document.getElementById('prodWhatsappBtn');
 
   function selectedVariant() {
     const checked = document.querySelector('input[name="variant"]:checked');
     return product.variants.find((v) => v.id === checked?.value) || product.variants[0];
+  }
+
+  function updateWhatsappLink() {
+    if (!whatsappBtn) return;
+    const variant = selectedVariant();
+    const price = variant.priceOverride ?? product.price;
+    const variantPart = product.variants.length > 1 ? ` — ${variant.label}` : '';
+    const message = `Hola! Vengo de la página de Aura Fev y quiero más información sobre: ${product.line}${variantPart} (${formatPEN(price)}).`;
+    const link = getSupportLink(message);
+    if (link) whatsappBtn.href = link;
   }
 
   function updateForVariant() {
@@ -127,9 +139,11 @@ function wireInteractions(product) {
     if (priceEl) priceEl.textContent = formatPEN(price);
     if (imageEl && variant.image) imageEl.src = variant.image;
     if (noteEl) noteEl.textContent = variant.note || '';
+    updateWhatsappLink();
   }
 
   variantInputs.forEach((input) => input.addEventListener('change', updateForVariant));
+  updateWhatsappLink();
 
   const addBtn = document.getElementById('addToCartBtn');
   if (addBtn) {
