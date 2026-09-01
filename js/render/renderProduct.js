@@ -126,9 +126,18 @@ function wireInteractions(product) {
   function updateWhatsappLink() {
     if (!whatsappBtn) return;
     const variant = selectedVariant();
-    const price = variant.priceOverride ?? product.price;
-    const variantPart = product.variants.length > 1 ? ` — ${variant.label}` : '';
-    const message = `Hola! Vengo de la página de Aura Fev y quiero más información sobre: ${product.line}${variantPart} (${formatPEN(price)}).`;
+    const price = formatPEN(variant.priceOverride ?? product.price);
+
+    const isHincha = product.slug === 'cumpleanos' && variant.id !== 'unica';
+    const template = isHincha
+      ? product.whatsappTemplateHincha
+      : product.whatsappTemplate;
+
+    const shortVariant = variant.label.replace(/^Edición Hincha — /, '');
+    const message = (template || `Hola! Vengo de la página de Aura Fev y quiero más información sobre: ${product.line} — ${variant.label} (${price}).`)
+      .replace('{variant}', shortVariant)
+      .replace('{price}', price);
+
     const link = getSupportLink(message);
     if (link) whatsappBtn.href = link;
   }
