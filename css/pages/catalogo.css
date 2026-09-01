@@ -7,11 +7,27 @@
 
 .catalog-hero .section-head { max-width: 640px; }
 
+.catalog-category { margin-top: 40px; }
+
+.catalog-category:not(:first-child) {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.catalog-category-head .eyebrow { margin-bottom: 6px; }
+
+.catalog-category-desc {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  font-weight: 300;
+}
+
 .prod-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
-  margin-top: 48px;
+  margin-top: 22px;
 }
 
 .prod-card {

@@ -1,6 +1,7 @@
 [
   {
     "slug": "luxury",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Luxury, con {variant}, al precio de {price}.",
     "keywords": ["whisky", "whiskey", "jack daniels", "johnnie walker", "peluche", "oso"],
     "line": "Luxury",
@@ -26,6 +27,7 @@
   },
   {
     "slug": "signature-vino-copas",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Signature, el Brindis Especial con vino y copas de cristal, al precio de {price}.",
     "keywords": ["vino", "peluche", "oso", "aniversario", "brindis"],
     "line": "Signature — Vino con Copas",
@@ -50,6 +52,7 @@
   },
   {
     "slug": "signature-vino",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Signature, con vino tinto y el peluche color {variant}, al precio de {price}.",
     "keywords": ["vino", "peluche", "oso", "osito"],
     "line": "Signature — Vino",
@@ -76,6 +79,7 @@
   },
   {
     "slug": "signature-sour",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Signature, con el Sour Tabernero y el peluche color {variant}, al precio de {price}.",
     "keywords": ["sour", "tabernero", "licor", "peluche", "oso", "osito"],
     "line": "Signature — Sour",
@@ -102,6 +106,7 @@
   },
   {
     "slug": "signature-corona",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Signature, con la Corona y el peluche color {variant}, al precio de {price}.",
     "keywords": ["cerveza", "peluche", "oso", "osito"],
     "line": "Signature — Corona",
@@ -128,6 +133,7 @@
   },
   {
     "slug": "bienvenida",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Bienvenida, para recibir al recién nacido, al precio de {price}.",
     "keywords": ["bebe", "bebé", "recien nacido", "recién nacido", "nacimiento", "peluche", "oso", "osito", "huggies"],
     "line": "Bienvenida",
@@ -151,6 +157,7 @@
   },
   {
     "slug": "cumpleanos",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Cumpleaños, al precio de {price}.",
     "whatsappTemplateHincha": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Cumpleaños, edición hincha con la camiseta de {variant}, al precio de {price}.",
     "keywords": ["peluche", "oso", "osito", "hincha", "alianza lima", "universitario", "sporting cristal", "futbol", "fútbol", "equipo"],
@@ -179,6 +186,7 @@
   },
   {
     "slug": "graduacion",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Graduación, en la variante {variant}, al precio de {price}.",
     "keywords": ["peluche", "oso", "osito", "birrete", "toga", "espumante", "champagne", "riccadonna"],
     "line": "Graduación",
@@ -204,6 +212,7 @@
   },
   {
     "slug": "profesiones",
+    "category": "cajas-regalo",
     "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Profesiones, con el peluche disfrazado de {variant}, al precio de {price}.",
     "keywords": ["peluche", "oso", "osito", "policia", "policía", "enfermero", "enfermera", "administrador", "trabajo", "graduación", "ascenso"],
     "line": "Profesiones",
@@ -230,6 +239,7 @@
   },
   {
     "slug": "aura-morning-mini",
+    "category": "desayuno",
     "line": "Aura Morning Mini",
     "badge": null,
     "price": 54,
@@ -253,6 +263,7 @@
   },
   {
     "slug": "aura-morning-classic",
+    "category": "desayuno",
     "line": "Aura Morning Classic",
     "badge": "Nuestro desayuno más pedido",
     "price": 74,
@@ -277,6 +288,7 @@
   },
   {
     "slug": "aura-morning-signature",
+    "category": "desayuno",
     "line": "Aura Morning Signature",
     "badge": "Edición premium",
     "price": 94,

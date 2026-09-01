@@ -1,6 +1,14 @@
 /**
  * js/render/renderCatalog.js
- * Populates the catalog grid from js/data/products.json.
+ * Populates the catalog grid from js/data/products.json, grouped by
+ * category (js/data/categories.json) — each product line lives in its
+ * own labeled section so, e.g., Aura Morning (desayunos) never renders
+ * mixed into the same grid as the gift boxes. They can coexist on the
+ * same /catalogo.html page, just not intermingled — this is by design,
+ * not an oversight, so don't "simplify" it back into one flat grid.
+ * Adding a future line (like flores) is just: tag its products with a
+ * new category id, add that id to categories.json — no render changes.
+ *
  * One card per product by default — but when a product has a variant
  * priced differently from the base (priceOverride, e.g. Cumpleaños'
  * "Edición Hincha" at S/69 vs the base S/54), that variant gets its own
@@ -107,10 +115,25 @@ function wireQuickAdd(container, products) {
   });
 }
 
+function categorySection(category, entries) {
+  return `
+    <section class="catalog-category reveal-stagger">
+      <div class="catalog-category-head">
+        <p class="eyebrow">${category.label}</p>
+        ${category.description ? `<p class="catalog-category-desc">${category.description}</p>` : ''}
+      </div>
+      <div class="prod-grid">${entries.map(productCard).join('')}</div>
+    </section>
+  `;
+}
+
 export async function renderCatalog(container, { occasion, query } = {}) {
   if (!container) return;
   try {
-    let products = await fetchJSON('/js/data/products.json');
+    let [products, categories] = await Promise.all([
+      fetchJSON('/js/data/products.json'),
+      fetchJSON('/js/data/categories.json')
+    ]);
     if (occasion) {
       products = products.filter((p) => p.occasion.includes(occasion));
     }
@@ -134,8 +157,27 @@ export async function renderCatalog(container, { occasion, query } = {}) {
       container.innerHTML = `<p class="prod-empty">${message}</p>`;
       return;
     }
-    const entries = products.flatMap(cardEntriesFor);
-    container.innerHTML = entries.map(productCard).join('');
+
+    const sections = categories
+      .map((cat) => {
+        const inCategory = products.filter((p) => p.category === cat.id);
+        if (!inCategory.length) return null;
+        return { category: cat, entries: inCategory.flatMap(cardEntriesFor) };
+      })
+      .filter(Boolean);
+
+    // Any product without a matching category id still has to show up
+    // somewhere rather than silently vanish from the catalog.
+    const categorized = new Set(categories.map((c) => c.id));
+    const uncategorized = products.filter((p) => !categorized.has(p.category));
+    if (uncategorized.length) {
+      sections.push({
+        category: { id: 'otros', label: 'Otros', description: null },
+        entries: uncategorized.flatMap(cardEntriesFor)
+      });
+    }
+
+    container.innerHTML = sections.map(({ category, entries }) => categorySection(category, entries)).join('');
     wireQuickAdd(container, products);
   } catch (err) {
     console.error('[renderCatalog]', err);
