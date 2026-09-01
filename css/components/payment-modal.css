@@ -13,10 +13,25 @@
   padding: 24px;
   background: rgba(42, 35, 28, 0.45);
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--duration-base) var(--ease);
 }
 
-.payment-modal-overlay.is-open { opacity: 1; }
+/* .hidden alone loses to the class's own `display:flex` above, since an
+   author rule always beats the UA default [hidden]{display:none} even
+   at equal specificity — without this, the closed modal stays flex-
+   displayed (just invisible via opacity) and keeps blocking clicks to
+   everything underneath it, including the cart drawer. */
+.payment-modal-overlay[hidden] {
+  display: none;
+}
+
+/* Belt-and-suspenders: even if a future edit ever removes the [hidden]
+   rule above or the JS misses setting it, an invisible overlay must
+   never be able to eat clicks meant for whatever is behind it — only
+   the .is-open state (the ~250ms it's actually visible) accepts
+   pointer input. */
+.payment-modal-overlay.is-open { opacity: 1; pointer-events: auto; }
 
 .payment-modal {
   position: relative;
