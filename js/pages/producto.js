@@ -8,6 +8,7 @@ import { qs } from '../utils/dom.js';
 import { initSiteChrome } from './shared.js';
 import { initReveal } from '../components/reveal.js';
 import { renderProduct } from '../render/renderProduct.js';
+import { wireWhatsappLinks } from '../components/whatsappLinks.js';
 
 async function init() {
   await initSiteChrome();
@@ -20,6 +21,13 @@ async function init() {
   if (product) {
     document.title = `${product.line} | Aura Fev`;
   }
+
+  // renderProduct() just created the "Consultar por WhatsApp" button —
+  // it didn't exist yet when initSiteChrome() ran wireWhatsappLinks()
+  // the first time, so it was still stuck on its href="#" placeholder.
+  // wireWhatsappLinks() is a pure href-setter (no listeners), safe to
+  // call again now that the element actually exists in the DOM.
+  wireWhatsappLinks();
 
   initReveal();
 }
