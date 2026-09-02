@@ -25,7 +25,7 @@
 .flores-promo-card {
   position: relative;
   width: 100%;
-  max-width: 620px;
+  max-width: 680px;
   max-height: 92vh;
   overflow-y: auto;
   background: var(--bg-primary);
@@ -67,16 +67,16 @@
 
 .flores-promo-collage {
   position: relative;
-  height: 230px;
+  height: 370px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .fp-media {
   position: absolute;
-  width: 128px;
+  width: 165px;
   aspect-ratio: 9 / 16;
   border-radius: 12px;
   overflow: hidden;
@@ -93,17 +93,17 @@
 
 .fp-media--left {
   z-index: 1;
-  transform: rotate(-9deg) translateX(-58px);
+  transform: rotate(-9deg) translateX(-74px);
 }
 
 .fp-media--right {
   z-index: 1;
-  transform: rotate(9deg) translateX(58px);
+  transform: rotate(9deg) translateX(74px);
 }
 
 .fp-media--center {
   z-index: 2;
-  width: 148px;
+  width: 195px;
 }
 
 .flores-promo-title {
@@ -149,10 +149,10 @@
 
 @media (max-width: 480px) {
   .flores-promo-card { padding: 32px 22px 28px; }
-  .flores-promo-collage { height: 190px; }
-  .fp-media { width: 104px; }
-  .fp-media--center { width: 122px; }
-  .fp-media--left { transform: rotate(-9deg) translateX(-46px); }
-  .fp-media--right { transform: rotate(9deg) translateX(46px); }
+  .flores-promo-collage { height: 300px; }
+  .fp-media { width: 133px; }
+  .fp-media--center { width: 158px; }
+  .fp-media--left { transform: rotate(-9deg) translateX(-60px); }
+  .fp-media--right { transform: rotate(9deg) translateX(60px); }
   .flores-promo-title { font-size: 1.4rem; }
 }

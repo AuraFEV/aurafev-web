@@ -32,10 +32,10 @@ export function initFloresPromo() {
 
       <div class="flores-promo-collage">
         <div class="fp-media fp-media--left">
-          <video autoplay muted loop playsinline src="/videos/flores-amarillas-reveal.mp4"></video>
+          <img src="/images/products/flores-amarillas-blanco.jpg" alt="Flores Amarillas — Aura Fev">
         </div>
         <div class="fp-media fp-media--center">
-          <img src="/images/products/flores-amarillas-blanco.jpg" alt="Flores Amarillas — Aura Fev">
+          <video autoplay muted loop playsinline src="/videos/flores-amarillas-reveal.mp4"></video>
         </div>
         <div class="fp-media fp-media--right">
           <img src="/images/products/flores-amarillas-negro.jpg" alt="Flores Amarillas — Aura Fev">
