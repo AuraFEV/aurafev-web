@@ -71,10 +71,10 @@ services:
         value: public, max-age=31536000, immutable
       - path: /css/*
         name: Cache-Control
-        value: public, max-age=3600
+        value: public, max-age=0, must-revalidate
       - path: /js/*
         name: Cache-Control
-        value: public, max-age=3600
+        value: public, max-age=0, must-revalidate
       - path: /js/data/*
         name: Cache-Control
         value: public, max-age=0, must-revalidate
