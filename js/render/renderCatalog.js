@@ -197,6 +197,7 @@ export function initCatalogFilterTitle() {
     'baby-shower': 'Bienvenida',
     pareja: 'Para mi Pareja',
     papa: 'Para Papá',
+    mama: 'Para Mamá',
     corporativo: 'Corporativo'
   };
   if (titleEl) {

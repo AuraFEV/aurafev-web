@@ -21,7 +21,7 @@
     "id": "mama",
     "label": "Para mamá",
     "icon": "mother",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=mama"
   },
   {
     "id": "papa",
@@ -51,6 +51,6 @@
     "id": "corporativo",
     "label": "Regalos Corporativos",
     "icon": "gift-corporate",
-    "href": "/proximamente.html"
+    "href": "/catalogo.html?ocasion=corporativo"
   }
 ]

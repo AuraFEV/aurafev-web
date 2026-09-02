@@ -8,5 +8,10 @@
     "id": "desayuno",
     "label": "Aura Morning — Desayunos",
     "description": "Café, pan y fruta para empezar el día con cariño."
+  },
+  {
+    "id": "flores-amarillas",
+    "label": "Flores Amarillas",
+    "description": "Girasoles, globo y un peluche — para celebrar el Día de las Flores Amarillas o cualquier día que se merezca uno."
   }
 ]

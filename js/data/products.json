@@ -311,5 +311,31 @@
     "variants": [
       { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-signature.jpg" }
     ]
+  },
+  {
+    "slug": "flores-amarillas",
+    "category": "flores-amarillas",
+    "line": "Flores Amarillas",
+    "badge": null,
+    "price": 69,
+    "compareAt": null,
+    "occasion": ["mama", "cumpleanos", "pareja"],
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre Flores Amarillas, en caja color {variant}, al precio de {price}.",
+    "tagline": "Para un día que se merece flores.",
+    "description": "Girasoles, peluche y globo metálico en caja redonda Aura Fev, con el color de caja que tú elijas.",
+    "keywords": ["girasoles", "flores", "amarillas", "peluche", "oso", "osito", "conejo", "año nuevo"],
+    "includes": [
+      "Girasoles",
+      "Peluche",
+      "Globo metálico",
+      "Caja redonda Aura Fev (blanco, negro o dorado)",
+      "Tarjeta de dedicatoria"
+    ],
+    "photoPending": false,
+    "variants": [
+      { "id": "blanco", "label": "Blanco", "image": "/images/products/flores-amarillas-blanco.jpg" },
+      { "id": "negro", "label": "Negro", "image": "/images/products/flores-amarillas-negro.jpg" },
+      { "id": "dorado", "label": "Dorado", "image": "/images/products/flores-amarillas-dorado.jpg" }
+    ]
   }
 ]
