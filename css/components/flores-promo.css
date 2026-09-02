@@ -26,11 +26,11 @@
   position: relative;
   width: 100%;
   max-width: 680px;
-  max-height: 92vh;
+  max-height: 96vh;
   overflow-y: auto;
   background: var(--bg-primary);
   border-radius: var(--radius-lg);
-  padding: 40px 36px 36px;
+  padding: 32px 36px 28px;
   text-align: center;
   transform: scale(0.96) translateY(10px);
   transition: transform var(--duration-base) var(--ease);
@@ -62,7 +62,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 22px;
+  margin-bottom: 14px;
 }
 
 .flores-promo-collage {
@@ -71,7 +71,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 
 .fp-media {
@@ -93,12 +93,12 @@
 
 .fp-media--left {
   z-index: 1;
-  transform: rotate(-9deg) translateX(-74px);
+  transform: rotate(-9deg) translateX(-96px);
 }
 
 .fp-media--right {
   z-index: 1;
-  transform: rotate(9deg) translateX(74px);
+  transform: rotate(9deg) translateX(96px);
 }
 
 .fp-media--center {
@@ -108,11 +108,11 @@
 
 .flores-promo-title {
   font-family: var(--font-display);
-  font-size: 1.7rem;
+  font-size: 1.55rem;
   font-weight: 400;
   line-height: 1.25;
   color: var(--text);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .flores-promo-title em {
@@ -124,35 +124,26 @@
   font-size: 0.9rem;
   color: var(--text-soft);
   max-width: 420px;
-  margin: 0 auto 26px;
-  line-height: 1.6;
+  margin: 0 auto 22px;
+  line-height: 1.55;
 }
 
 .flores-promo-ctas {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
-.flores-promo-ctas .btn { min-width: 220px; }
-
-.flores-promo-whatsapp {
-  font-size: 0.82rem;
-  color: var(--text-soft);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color var(--duration-fast);
-}
-
-.flores-promo-whatsapp:hover { color: var(--gold); }
+.flores-promo-ctas .btn { min-width: 260px; }
 
 @media (max-width: 480px) {
-  .flores-promo-card { padding: 32px 22px 28px; }
+  .flores-promo-card { padding: 26px 20px 24px; }
   .flores-promo-collage { height: 300px; }
   .fp-media { width: 133px; }
   .fp-media--center { width: 158px; }
-  .fp-media--left { transform: rotate(-9deg) translateX(-60px); }
-  .fp-media--right { transform: rotate(9deg) translateX(60px); }
-  .flores-promo-title { font-size: 1.4rem; }
+  .fp-media--left { transform: rotate(-9deg) translateX(-68px); }
+  .fp-media--right { transform: rotate(9deg) translateX(68px); }
+  .flores-promo-title { font-size: 1.35rem; }
+  .flores-promo-ctas .btn { min-width: 100%; }
 }

@@ -43,11 +43,11 @@ export function initFloresPromo() {
       </div>
 
       <h2 class="flores-promo-title">Iniciamos la pre-venta de<br><em>nuestras Flores Amarillas</em></h2>
-      <p class="flores-promo-sub">El 21 de setiembre es el Día de las Flores Amarillas — separa la tuya con tiempo, el año pasado se agotaron rápido.</p>
+      <p class="flores-promo-sub">El 21 de setiembre es el Día de las Flores Amarillas. Separa la tuya con tiempo — se agotan rápido.</p>
 
       <div class="flores-promo-ctas">
         <a href="/producto.html?linea=flores-amarillas" class="btn btn-primary">Ver Flores Amarillas</a>
-        <a href="#" class="flores-promo-whatsapp" data-whatsapp-preventa target="_blank" rel="noopener">o aparta la tuya por WhatsApp</a>
+        <a href="#" class="btn btn-ghost" data-whatsapp-preventa target="_blank" rel="noopener">Aparta la tuya por WhatsApp</a>
       </div>
     </div>
   `;
