@@ -1,0 +1,158 @@
+/**
+ * flores-promo.css
+ * The "Día de las Flores Amarillas" pre-sale welcome popup (see
+ * js/components/floresPromo.js). Same visual language as the rest of
+ * the site — cream/gold, Fraunces for the statement line, generous
+ * whitespace — this is meant to read as an editorial moment, not a
+ * pop-up ad. The 3-photo fan collage is the centerpiece; the copy
+ * stays understated around it.
+ */
+.flores-promo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(30, 24, 18, 0.55);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease);
+}
+
+.flores-promo-overlay.is-open { opacity: 1; }
+
+.flores-promo-card {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px 36px;
+  text-align: center;
+  transform: scale(0.96) translateY(10px);
+  transition: transform var(--duration-base) var(--ease);
+}
+
+.flores-promo-overlay.is-open .flores-promo-card { transform: scale(1) translateY(0); }
+
+.flores-promo-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg-primary);
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: color var(--duration-fast), border-color var(--duration-fast);
+  z-index: 5;
+}
+
+.flores-promo-close:hover { color: var(--gold); border-color: var(--gold); }
+
+.flores-promo-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+
+.flores-promo-collage {
+  position: relative;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.fp-media {
+  position: absolute;
+  width: 128px;
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 4px solid var(--bg-primary);
+  box-shadow: 0 16px 32px -12px rgba(42, 35, 28, 0.35);
+}
+
+.fp-media img, .fp-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fp-media--left {
+  z-index: 1;
+  transform: rotate(-9deg) translateX(-58px);
+}
+
+.fp-media--right {
+  z-index: 1;
+  transform: rotate(9deg) translateX(58px);
+}
+
+.fp-media--center {
+  z-index: 2;
+  width: 148px;
+}
+
+.flores-promo-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.flores-promo-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.flores-promo-sub {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  max-width: 420px;
+  margin: 0 auto 26px;
+  line-height: 1.6;
+}
+
+.flores-promo-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.flores-promo-ctas .btn { min-width: 220px; }
+
+.flores-promo-whatsapp {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast);
+}
+
+.flores-promo-whatsapp:hover { color: var(--gold); }
+
+@media (max-width: 480px) {
+  .flores-promo-card { padding: 32px 22px 28px; }
+  .flores-promo-collage { height: 190px; }
+  .fp-media { width: 104px; }
+  .fp-media--center { width: 122px; }
+  .fp-media--left { transform: rotate(-9deg) translateX(-46px); }
+  .fp-media--right { transform: rotate(9deg) translateX(46px); }
+  .flores-promo-title { font-size: 1.4rem; }
+}

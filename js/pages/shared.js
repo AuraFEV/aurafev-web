@@ -19,6 +19,7 @@ import { initSocialRail } from '../components/socialRail.js';
 import { initSearch } from '../components/search.js';
 import { initCartDrawer } from '../components/cartDrawer.js';
 import { wirePaymentBadges } from '../components/paymentInfo.js';
+import { initFloresPromo } from '../components/floresPromo.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
@@ -48,6 +49,7 @@ export async function initSiteChrome() {
   initChatWidget();
   initCartBadge();
   initCartDrawer();
+  initFloresPromo();
 
   await Promise.all([
     renderFooterNav({
