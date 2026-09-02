@@ -219,7 +219,7 @@
     "badge": null,
     "price": 74,
     "compareAt": null,
-    "occasion": ["graduacion", "corporativo"],
+    "occasion": ["corporativo"],
     "tagline": "Para celebrar su vocación, con orgullo.",
     "description": "Peluche disfrazado de policía, enfermero o administrador, vino tinto y Ferrero Rocher en caja Aura Fev.",
     "includes": [
@@ -238,14 +238,14 @@
     ]
   },
   {
-    "slug": "aura-morning-mini",
+    "slug": "desayuno-aura-mini",
     "category": "desayuno",
-    "line": "Aura Morning Mini",
+    "line": "Desayuno Aura Mini",
     "badge": null,
     "price": 54,
     "compareAt": null,
     "occasion": ["pareja", "corporativo"],
-    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Aura Morning Mini, al precio de {price}.",
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Desayuno Aura Mini, al precio de {price}.",
     "tagline": "Para empezar el día con cariño.",
     "description": "Taza, café Altomayo Gourmet, croissant, jugo y ensalada de frutas en caja Aura Fev.",
     "includes": [
@@ -258,18 +258,18 @@
     ],
     "photoPending": false,
     "variants": [
-      { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-mini.jpg" }
+      { "id": "unica", "label": "Edición única", "image": "/images/products/desayuno-aura-mini.jpg" }
     ]
   },
   {
-    "slug": "aura-morning-classic",
+    "slug": "desayuno-aura-classic",
     "category": "desayuno",
-    "line": "Aura Morning Classic",
+    "line": "Desayuno Aura Classic",
     "badge": "Nuestro desayuno más pedido",
     "price": 74,
     "compareAt": null,
     "occasion": ["pareja", "corporativo"],
-    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Aura Morning Classic, al precio de {price}.",
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Desayuno Aura Classic, al precio de {price}.",
     "tagline": "Para un desayuno que se siente completo.",
     "description": "Taza, café Altomayo Gourmet, pan con pollo, jugo, ensalada de frutas y alfajor en caja Aura Fev.",
     "includes": [
@@ -283,18 +283,18 @@
     ],
     "photoPending": false,
     "variants": [
-      { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-classic.jpg" }
+      { "id": "unica", "label": "Edición única", "image": "/images/products/desayuno-aura-classic.jpg" }
     ]
   },
   {
-    "slug": "aura-morning-signature",
+    "slug": "desayuno-aura-signature",
     "category": "desayuno",
-    "line": "Aura Morning Signature",
+    "line": "Desayuno Aura Signature",
     "badge": "Edición premium",
     "price": 94,
     "compareAt": null,
     "occasion": ["pareja", "corporativo"],
-    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Aura Morning Signature, al precio de {price}.",
+    "whatsappTemplate": "Hola! Vengo de la página de Aura Fev y quiero más información sobre la línea Desayuno Aura Signature, al precio de {price}.",
     "tagline": "Para consentir de verdad, sin ocasión especial.",
     "description": "Taza, café Altomayo Gourmet, pan con chicharrón, tamal, jugo, ensalada de frutas y alfajor en caja Aura Fev.",
     "includes": [
@@ -309,7 +309,7 @@
     ],
     "photoPending": false,
     "variants": [
-      { "id": "unica", "label": "Edición única", "image": "/images/products/aura-morning-signature.jpg" }
+      { "id": "unica", "label": "Edición única", "image": "/images/products/desayuno-aura-signature.jpg" }
     ]
   },
   {
@@ -328,14 +328,15 @@
       "Girasoles",
       "Peluche",
       "Globo metálico",
-      "Caja redonda Aura Fev (blanco, negro o dorado)",
+      "Caja redonda Aura Fev (blanco, negro o marrón)",
       "Tarjeta de dedicatoria"
     ],
     "photoPending": false,
+    "splitVariantsInCatalog": true,
     "variants": [
       { "id": "blanco", "label": "Blanco", "image": "/images/products/flores-amarillas-blanco.jpg" },
       { "id": "negro", "label": "Negro", "image": "/images/products/flores-amarillas-negro.jpg" },
-      { "id": "dorado", "label": "Dorado", "image": "/images/products/flores-amarillas-dorado.jpg" }
+      { "id": "marron", "label": "Marrón", "image": "/images/products/flores-amarillas-marron.jpg" }
     ]
   }
 ]

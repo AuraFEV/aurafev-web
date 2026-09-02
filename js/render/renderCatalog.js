@@ -2,7 +2,7 @@
  * js/render/renderCatalog.js
  * Populates the catalog grid from js/data/products.json, grouped by
  * category (js/data/categories.json) — each product line lives in its
- * own labeled section so, e.g., Aura Morning (desayunos) never renders
+ * own labeled section so, e.g., Desayuno Aura never renders
  * mixed into the same grid as the gift boxes. They can coexist on the
  * same /catalogo.html page, just not intermingled — this is by design,
  * not an oversight, so don't "simplify" it back into one flat grid.
@@ -32,8 +32,20 @@ function normalize(str) {
     .replace(/ñ/g, 'n');
 }
 
-/** Base card (product.variants[0]) + one extra card per differently-priced variant. */
+/**
+ * Base card (product.variants[0]) + one extra card per differently-priced
+ * variant — that's the default, for products where color/flavor is a
+ * "pick on the detail page" choice (Luxury's 2 whiskies, the bear-color
+ * pickers). Some products opt into showing EVERY variant as its own
+ * catalog card regardless of price (splitVariantsInCatalog: true) —
+ * Flores Amarillas is one, since the box color is the whole visual
+ * decision a customer is making, not a secondary detail to discover
+ * after clicking through.
+ */
 function cardEntriesFor(product) {
+  if (product.splitVariantsInCatalog) {
+    return product.variants.map((v) => ({ product, variant: v, isVariant: true }));
+  }
   const base = product.variants[0];
   const entries = [{ product, variant: base, isVariant: false }];
   product.variants.slice(1).forEach((v) => {
