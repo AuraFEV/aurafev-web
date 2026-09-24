@@ -24,6 +24,7 @@ import { wirePaymentBadges } from '../components/paymentInfo.js';
 // solo hay que volver a importarlo y llamarlo abajo, y actualizar
 // PROMO_END en ese archivo a la fecha correcta de esa edición.
 // import { initFloresPromo } from '../components/floresPromo.js';
+import { initHotWheelsPromo } from '../components/hotWheelsPromo.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
@@ -54,6 +55,7 @@ export async function initSiteChrome() {
   initCartBadge();
   initCartDrawer();
   // initFloresPromo(); — desactivado, ver comentario junto al import arriba.
+  initHotWheelsPromo();
 
   await Promise.all([
     renderFooterNav({
