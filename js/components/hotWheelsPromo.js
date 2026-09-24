@@ -39,10 +39,10 @@ export function initHotWheelsPromo() {
 
       <div class="hw-promo-collage">
         <div class="hw-media hw-media--left">
-          <img src="/images/products/hotwheels-hero.jpg" alt="Hot Wheels — Aura Fev">
+          <img src="/images/products/hotwheels-bouquet.jpg" alt="Ramo Hot Wheels — Aura Fev">
         </div>
         <div class="hw-media hw-media--center">
-          <img src="/images/products/hotwheels-bouquet.jpg" alt="Ramo Hot Wheels — Aura Fev">
+          <img src="/images/products/hotwheels-hero.jpg" alt="Hot Wheels — Aura Fev">
         </div>
         <div class="hw-media hw-media--right">
           <img src="/images/products/hotwheels-box.jpg" alt="Caja Hot Wheels — Aura Fev">
