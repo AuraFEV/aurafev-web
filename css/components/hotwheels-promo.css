@@ -137,12 +137,12 @@
 .hw-promo-ctas .btn { min-width: 260px; }
 
 @media (max-width: 480px) {
-  .hw-promo-card { padding: 26px 20px 24px; }
-  .hw-promo-collage { height: 170px; }
-  .hw-media { width: 175px; }
-  .hw-media--center { width: 205px; }
-  .hw-media--left { transform: rotate(-7deg) translateX(-128px); }
-  .hw-media--right { transform: rotate(7deg) translateX(128px); }
+  .hw-promo-card { padding: 26px 16px 24px; }
+  .hw-promo-collage { height: 145px; }
+  .hw-media { width: 120px; }
+  .hw-media--center { width: 160px; }
+  .hw-media--left { transform: rotate(-7deg) translateX(-76px); }
+  .hw-media--right { transform: rotate(7deg) translateX(76px); }
   .hw-promo-title { font-size: 1.35rem; }
   .hw-promo-ctas .btn { min-width: 100%; }
 }
