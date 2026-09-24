@@ -19,7 +19,11 @@ import { initSocialRail } from '../components/socialRail.js';
 import { initSearch } from '../components/search.js';
 import { initCartDrawer } from '../components/cartDrawer.js';
 import { wirePaymentBadges } from '../components/paymentInfo.js';
-import { initFloresPromo } from '../components/floresPromo.js';
+// floresPromo.js queda disponible sin usar — campaña "Día de las Flores
+// Amarillas" (21 de setiembre) ya pasó. Reutilizable el próximo año:
+// solo hay que volver a importarlo y llamarlo abajo, y actualizar
+// PROMO_END en ese archivo a la fecha correcta de esa edición.
+// import { initFloresPromo } from '../components/floresPromo.js';
 import { renderFooterNav } from '../render/renderFooterNav.js';
 import { renderPaymentBadges } from '../render/renderPaymentBadges.js';
 import { initAnalytics, trackPageView } from '../services/analytics/analyticsService.js';
@@ -49,7 +53,7 @@ export async function initSiteChrome() {
   initChatWidget();
   initCartBadge();
   initCartDrawer();
-  initFloresPromo();
+  // initFloresPromo(); — desactivado, ver comentario junto al import arriba.
 
   await Promise.all([
     renderFooterNav({
